@@ -17,7 +17,7 @@ ProximitySensor::~ProximitySensor() {
 	// TODO Auto-generated destructor stub
 }
 
-void ProximitySensor::ProximityCallBack(const sensor_msgs::Range::ConstPtr & msg){
+void ProximitySensor::proximityCallBack(const sensor_msgs::Range::ConstPtr & msg){
 
 
 }
