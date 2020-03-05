@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../include/group6_rwa2/breakbeam.h
+../include/group6_rwa2/break_beam.h
 list
 -
 osrf_gear/Proximity.h
@@ -55,6 +55,16 @@ geometry_msgs/TransformStamped.h
 -
 tf2_geometry_msgs/tf2_geometry_msgs.h
 -
+../include/group6_rwa2/break_beam.h
+-
+../include/group6_rwa2/depth_camera.h
+-
+../include/group6_rwa2/orders.h
+-
+../include/group6_rwa2/proximity_sensor.h
+-
+../include/group6_rwa2/laser_profiler.h
+-
 
 ../include/group6_rwa2/orders.h
 ros/ros.h
@@ -65,10 +75,6 @@ osrf_gear/Order.h
 ../include/group6_rwa2/proximity_sensor.h
 sensor_msgs/Range.h
 -
-
-/home/raja/catkin_ws/src/group6_rwa2/src/laser_profiler.cpp
-group6_rwa2/laser_profiler.h
-/home/raja/catkin_ws/src/group6_rwa2/src/group6_rwa2/laser_profiler.h
 
 /home/raja/catkin_ws/src/group6_rwa2/src/node.cpp
 algorithm
@@ -108,16 +114,6 @@ geometry_msgs/TransformStamped.h
 tf2_geometry_msgs/tf2_geometry_msgs.h
 -
 ../include/group6_rwa2/node.h
--
-../include/group6_rwa2/breakbeam.h
--
-../include/group6_rwa2/depth_camera.h
--
-../include/group6_rwa2/orders.h
--
-../include/group6_rwa2/proximity_sensor.h
--
-../include/group6_rwa2/laser_profiler.h
 -
 
 /opt/ros/melodic/include/boost_161_condition_variable.h

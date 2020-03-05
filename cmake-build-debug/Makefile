@@ -1090,6 +1090,33 @@ gtest/fast:
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+src/break_beam.o: src/break_beam.cpp.o
+
+.PHONY : src/break_beam.o
+
+# target to build an object file
+src/break_beam.cpp.o:
+	$(MAKE) -f CMakeFiles/ariac_example_node.dir/build.make CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.o
+.PHONY : src/break_beam.cpp.o
+
+src/break_beam.i: src/break_beam.cpp.i
+
+.PHONY : src/break_beam.i
+
+# target to preprocess a source file
+src/break_beam.cpp.i:
+	$(MAKE) -f CMakeFiles/ariac_example_node.dir/build.make CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.i
+.PHONY : src/break_beam.cpp.i
+
+src/break_beam.s: src/break_beam.cpp.s
+
+.PHONY : src/break_beam.s
+
+# target to generate assembly for a file
+src/break_beam.cpp.s:
+	$(MAKE) -f CMakeFiles/ariac_example_node.dir/build.make CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.s
+.PHONY : src/break_beam.cpp.s
+
 src/depth_camera.o: src/depth_camera.cpp.o
 
 .PHONY : src/depth_camera.o
@@ -1282,6 +1309,9 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... src/break_beam.o"
+	@echo "... src/break_beam.i"
+	@echo "... src/break_beam.s"
 	@echo "... src/depth_camera.o"
 	@echo "... src/depth_camera.i"
 	@echo "... src/depth_camera.s"

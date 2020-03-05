@@ -16,7 +16,7 @@ BreakBeam::BreakBeam() {
 BreakBeam::~BreakBeam() {
 	// TODO Auto-generated destructor stub
 }
-BreakBeam::breakBeamCallback(const osrf_gear::Proximity::ConstPtr& msg){
+void BreakBeam::breakBeamCallback(const osrf_gear::Proximity::ConstPtr& msg){
 
 }
 

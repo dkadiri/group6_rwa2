@@ -55,11 +55,7 @@
 #include <geometry_msgs/TransformStamped.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h> //--needed for tf2::Matrix3x3
 #include <../include/group6_rwa2/node.h>
-#include <group6_rwa2/break_beam.h>
-#include <../include/group6_rwa2/depth_camera.h>
-#include <../include/group6_rwa2/orders.h>
-#include <../include/group6_rwa2/proximity_sensor.h>
-#include <../include/group6_rwa2/laser_profiler.h>
+
 
 
 

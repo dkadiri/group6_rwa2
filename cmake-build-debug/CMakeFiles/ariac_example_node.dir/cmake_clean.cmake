@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.o"
   "CMakeFiles/ariac_example_node.dir/src/depth_camera.cpp.o"
   "CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.o"
   "CMakeFiles/ariac_example_node.dir/src/node.cpp.o"
