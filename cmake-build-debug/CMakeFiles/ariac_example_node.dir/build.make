@@ -96,9 +96,22 @@ CMakeFiles/ariac_example_node.dir/src/node.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ariac_example_node.dir/src/node.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/raja/catkin_ws/src/group6_rwa2/src/node.cpp -o CMakeFiles/ariac_example_node.dir/src/node.cpp.s
 
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: CMakeFiles/ariac_example_node.dir/flags.make
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: ../src/proximity_sensor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o -c /home/raja/catkin_ws/src/group6_rwa2/src/proximity_sensor.cpp
+
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/raja/catkin_ws/src/group6_rwa2/src/proximity_sensor.cpp > CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.i
+
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/raja/catkin_ws/src/group6_rwa2/src/proximity_sensor.cpp -o CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.s
+
 CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.o: CMakeFiles/ariac_example_node.dir/flags.make
 CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.o: ../src/laser_profiler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.o -c /home/raja/catkin_ws/src/group6_rwa2/src/laser_profiler.cpp
 
 CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.i: cmake_force
@@ -111,7 +124,7 @@ CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.s: cmake_force
 
 CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.o: CMakeFiles/ariac_example_node.dir/flags.make
 CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.o: ../src/break_beam.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.o -c /home/raja/catkin_ws/src/group6_rwa2/src/break_beam.cpp
 
 CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.i: cmake_force
@@ -122,13 +135,28 @@ CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/raja/catkin_ws/src/group6_rwa2/src/break_beam.cpp -o CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.s
 
+CMakeFiles/ariac_example_node.dir/src/main.cpp.o: CMakeFiles/ariac_example_node.dir/flags.make
+CMakeFiles/ariac_example_node.dir/src/main.cpp.o: ../src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ariac_example_node.dir/src/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ariac_example_node.dir/src/main.cpp.o -c /home/raja/catkin_ws/src/group6_rwa2/src/main.cpp
+
+CMakeFiles/ariac_example_node.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ariac_example_node.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/raja/catkin_ws/src/group6_rwa2/src/main.cpp > CMakeFiles/ariac_example_node.dir/src/main.cpp.i
+
+CMakeFiles/ariac_example_node.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ariac_example_node.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/raja/catkin_ws/src/group6_rwa2/src/main.cpp -o CMakeFiles/ariac_example_node.dir/src/main.cpp.s
+
 # Object files for target ariac_example_node
 ariac_example_node_OBJECTS = \
 "CMakeFiles/ariac_example_node.dir/src/depth_camera.cpp.o" \
 "CMakeFiles/ariac_example_node.dir/src/orders.cpp.o" \
 "CMakeFiles/ariac_example_node.dir/src/node.cpp.o" \
+"CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o" \
 "CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.o" \
-"CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.o"
+"CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.o" \
+"CMakeFiles/ariac_example_node.dir/src/main.cpp.o"
 
 # External object files for target ariac_example_node
 ariac_example_node_EXTERNAL_OBJECTS =
@@ -136,8 +164,10 @@ ariac_example_node_EXTERNAL_OBJECTS =
 devel/lib/group6_rwa2/ariac_example_node: CMakeFiles/ariac_example_node.dir/src/depth_camera.cpp.o
 devel/lib/group6_rwa2/ariac_example_node: CMakeFiles/ariac_example_node.dir/src/orders.cpp.o
 devel/lib/group6_rwa2/ariac_example_node: CMakeFiles/ariac_example_node.dir/src/node.cpp.o
+devel/lib/group6_rwa2/ariac_example_node: CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o
 devel/lib/group6_rwa2/ariac_example_node: CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.o
 devel/lib/group6_rwa2/ariac_example_node: CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.o
+devel/lib/group6_rwa2/ariac_example_node: CMakeFiles/ariac_example_node.dir/src/main.cpp.o
 devel/lib/group6_rwa2/ariac_example_node: CMakeFiles/ariac_example_node.dir/build.make
 devel/lib/group6_rwa2/ariac_example_node: /opt/ros/melodic/lib/libtf.so
 devel/lib/group6_rwa2/ariac_example_node: /opt/ros/melodic/lib/libtf2_ros.so
@@ -164,7 +194,7 @@ devel/lib/group6_rwa2/ariac_example_node: /usr/lib/x86_64-linux-gnu/libboost_ato
 devel/lib/group6_rwa2/ariac_example_node: /usr/lib/x86_64-linux-gnu/libpthread.so
 devel/lib/group6_rwa2/ariac_example_node: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
 devel/lib/group6_rwa2/ariac_example_node: CMakeFiles/ariac_example_node.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable devel/lib/group6_rwa2/ariac_example_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable devel/lib/group6_rwa2/ariac_example_node"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ariac_example_node.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

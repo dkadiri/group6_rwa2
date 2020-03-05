@@ -43,6 +43,8 @@ CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.o: /opt/ros/melodic/inc
 CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.o: /opt/ros/melodic/include/sensor_msgs/LaserScan.h
 CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
 
+CMakeFiles/ariac_example_node.dir/src/main.cpp.o: ../src/main.cpp
+
 CMakeFiles/ariac_example_node.dir/src/node.cpp.o: ../include/group6_rwa2/break_beam.h
 CMakeFiles/ariac_example_node.dir/src/node.cpp.o: ../include/group6_rwa2/depth_camera.h
 CMakeFiles/ariac_example_node.dir/src/node.cpp.o: ../include/group6_rwa2/laser_profiler.h
@@ -241,4 +243,24 @@ CMakeFiles/ariac_example_node.dir/src/orders.cpp.o: /opt/ros/melodic/include/ros
 CMakeFiles/ariac_example_node.dir/src/orders.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
 CMakeFiles/ariac_example_node.dir/src/orders.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 CMakeFiles/ariac_example_node.dir/src/orders.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
+
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: ../include/group6_rwa2/proximity_sensor.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: ../src/proximity_sensor.cpp
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/builtin_message_traits.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/datatypes.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/duration.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/exception.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/macros.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/message_forward.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/message_operations.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/message_traits.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/platform.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/roscpp_serialization_macros.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/rostime_decl.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/serialization.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/serialized_message.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/time.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/ros/types.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/sensor_msgs/Range.h
+CMakeFiles/ariac_example_node.dir/src/proximity_sensor.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
 

@@ -25,7 +25,7 @@ catkin_package()
 include_directories(include ${catkin_INCLUDE_DIRS})
 
 ## Declare a C++ executable
-add_executable(ariac_example_node src/depth_camera.cpp src/orders.cpp src/node.cpp src/laser_profiler.cpp src/break_beam.cpp)
+add_executable(ariac_example_node src/depth_camera.cpp src/orders.cpp src/node.cpp src/proximity_sensor.cpp src/laser_profiler.cpp src/break_beam.cpp src/main.cpp)
 add_dependencies(ariac_example_node ${catkin_EXPORTED_TARGETS})
 target_link_libraries(ariac_example_node ${catkin_LIBRARIES})
 

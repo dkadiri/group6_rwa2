@@ -4,7 +4,6 @@
  *  Created on: Mar 3, 2020
  *      Author: sanket
  */
-#pragma once
 #ifndef BREAKBEAM_H_
 #define BREAKBEAM_H_
 #include <list>

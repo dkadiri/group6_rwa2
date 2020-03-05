@@ -71,9 +71,9 @@ class Node {
 private:
 	ros::NodeHandle node;
     // creating class objects
-    ProximitySensor proximitySensor;
+    ProximitySensor proximity_sensor;
     Orders orders;
-    BreakBeam breakBeam;
+    BreakBeam break_beam;
     LaserProfiler laserProfiler;
 	ros::Subscriber current_score_subscriber;
 	ros::Subscriber competition_state_subscriber;
