@@ -3,10 +3,10 @@
 
 
 Orders::Orders() {
+}
 
-	orders_subscriber = node.subscribe(
-			"/ariac/orders", 10,
-			&MyCompetitionClass::order_callback, &comp_class);
+Orders::~Orders() {
+
 }
 
 

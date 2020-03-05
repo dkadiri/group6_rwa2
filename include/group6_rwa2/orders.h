@@ -9,4 +9,6 @@ private :
 public:
 	Orders();
 	~Orders();
+    void order_callback(const osrf_gear::Order::ConstPtr & order_msg);
+private:
 };

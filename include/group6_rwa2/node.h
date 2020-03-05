@@ -60,8 +60,16 @@
 
 class Node {
 
+    Node();
+    ~Node();
+
 private:
 	ros::NodeHandle node;
+    // creating class objects
+    ProximitySensor proximitySensor;
+    Orders orders;
+    BreakBeam breakBeam;
+    LaserProfiler laserProfiler;
 	ros::Subscriber current_score_subscriber;
 	ros::Subscriber competition_state_subscriber;
 	
@@ -78,16 +86,6 @@ private:
 	ros::Subscriber laser_profiler_subscriber;
 	ros::Subscriber depth_camera_subscriber;
 public:
-	void current_score_callback(const std_msgs::Float32::ConstPtr & );
-	void competition_state_callback(const std_msgs::String::ConstPtr & );
-	void arm_1_joint_state_callback(const sensor_msgs::JointState::ConstPtr &);
-	void arm_2_joint_state_callback(const sensor_msgs::JointState::ConstPtr & );
-	void send_arm_to_zero_state(ros::Publisher &);
-	void logical_camera_callback(const osrf_gear::LogicalCameraImage::ConstPtr &);
-	void break_beam_callback(const osrf_gear::Proximity::ConstPtr & );
-	void depth_camera_callback(const sensor_msgs::PointCloud::ConstPtr &);
-	void proximity_sensor_callback(const sensor_msgs::Range::ConstPtr & );
-	void laser_profiler_callback(const sensor_msgs::LaserScan::ConstPtr & );
 
 };
 #endif  // INCLUDE__GROPU6_NODE_H_

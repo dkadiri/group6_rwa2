@@ -55,10 +55,12 @@
 #include <geometry_msgs/TransformStamped.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h> //--needed for tf2::Matrix3x3
 #include <../include/group6_rwa2/node.h>
-#include <../include/group6_rwa2/breakbeam.h>
+#include <group6_rwa2/break_beam.h>
 #include <../include/group6_rwa2/depth_camera.h>
 #include <../include/group6_rwa2/orders.h>
 #include <../include/group6_rwa2/proximity_sensor.h>
+#include <../include/group6_rwa2/laser_profiler.h>
+
 
 
 
@@ -66,13 +68,11 @@ Node::Node() {
 
 	// Subscribe to the '/ariac/current_score' topic.
 	ros::Subscriber current_score_subscriber = node.subscribe(
-			"/ariac/current_score", 10,
-			&MyCompetitionClass::current_score_callback, &comp_class);
+			"/ariac/current_score", 10, Node::current_score_callback);
 
 	// Subscribe to the '/ariac/competition_state' topic.
 	ros::Subscriber competition_state_subscriber = node.subscribe(
-			"/ariac/competition_state", 10,
-			&MyCompetitionClass::competition_state_callback, &comp_class);
+			"/ariac/competition_state", 10, competition_state_callback);
 
 	// Subscribe to the '/ariac/joint_states' topic.
 	ros::Subscriber arm_1_joint_state_subscriber = node.subscribe(
@@ -85,18 +85,19 @@ Node::Node() {
 			
 	// Subscribe to the '/ariac/proximity_sensor_1' topic.
 	ros::Subscriber proximity_sensor_subscriber = node.subscribe(
-			"/ariac/proximity_sensor_1", 10, proximity_sensor_callback);
+			"/ariac/proximity_sensor_1", 10,
+			&ProximitySensor::proximityCallBack, &proximitySensor);
 	// %EndTag(SUB_FUNC)%
 
 	// Subscribe to the '/ariac/break_beam_1_change' topic.
 	ros::Subscriber break_beam_subscriber = node.subscribe(
 			"/ariac/break_beam_1_change", 10,
-			&MyCompetitionClass::break_beam_callback, &comp_class);
+			&BreakBeam::break_beam_callback, &breakBeam);
 
 	// Subscribe to the '/ariac/logical_camera_1' topic.
 	ros::Subscriber logical_camera1_subscriber = node.subscribe(
 			"/ariac/logical_camera_1", 10,
-			&MyCompetitionClass::logical_camera_callback, &comp_class);
+			&LogicalCamera::logical_camera_callback, &comp_class);
 
 	// Subscribe to the '/ariac/logical_camera_2' topic.
 	ros::Subscriber logical_camera2_subscriber = node.subscribe(
@@ -115,7 +116,9 @@ Node::Node() {
 
 	// Subscribe to the '/ariac/laser_profiler_1' topic.
 	ros::Subscriber laser_profiler_subscriber = node.subscribe(
-			"/ariac/laser_profiler_1", 10, laser_profiler_callback);
+			"/ariac/laser_profiler_1", 10,
+			&LaserProfiler::laserCallBack , &laserProfiler);
+
 	ros::Subscriber depth_camera_subscriber = node.subscribe(
 			"/ariac/depth_camera_1", 10,
 			&MyCompetitionClass::depth_camera_callback, &comp_class);
