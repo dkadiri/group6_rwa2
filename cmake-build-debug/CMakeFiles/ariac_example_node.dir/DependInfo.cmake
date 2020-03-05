@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/raja/catkin_ws/src/group6_rwa2/src/break_beam.cpp" "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles/ariac_example_node.dir/src/break_beam.cpp.o"
   "/home/raja/catkin_ws/src/group6_rwa2/src/depth_camera.cpp" "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles/ariac_example_node.dir/src/depth_camera.cpp.o"
   "/home/raja/catkin_ws/src/group6_rwa2/src/laser_profiler.cpp" "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.o"
+  "/home/raja/catkin_ws/src/group6_rwa2/src/logical_camera.cpp" "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles/ariac_example_node.dir/src/logical_camera.cpp.o"
   "/home/raja/catkin_ws/src/group6_rwa2/src/main.cpp" "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles/ariac_example_node.dir/src/main.cpp.o"
   "/home/raja/catkin_ws/src/group6_rwa2/src/node.cpp" "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles/ariac_example_node.dir/src/node.cpp.o"
   "/home/raja/catkin_ws/src/group6_rwa2/src/orders.cpp" "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/CMakeFiles/ariac_example_node.dir/src/orders.cpp.o"

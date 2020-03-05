@@ -1031,6 +1031,9 @@
 		<Unit filename="/home/raja/catkin_ws/src/group6_rwa2/src/laser_profiler.cpp">
 			<Option target="ariac_example_node"/>
 		</Unit>
+		<Unit filename="/home/raja/catkin_ws/src/group6_rwa2/src/logical_camera.cpp">
+			<Option target="ariac_example_node"/>
+		</Unit>
 		<Unit filename="/home/raja/catkin_ws/src/group6_rwa2/src/main.cpp">
 			<Option target="ariac_example_node"/>
 		</Unit>

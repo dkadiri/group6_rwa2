@@ -9,6 +9,7 @@ private :
 public:
 	Orders();
 	~Orders();
-    void order_callback(const osrf_gear::Order::ConstPtr & order_msg);
-private:
+    void orderCallback(const osrf_gear::Order::ConstPtr & order_msg);
+    void readOrder();
+    std::vector<osrf_gear::Order> getOrder();
 };

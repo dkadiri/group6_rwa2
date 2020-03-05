@@ -73,11 +73,11 @@ Node::Node() {
 			"/ariac/break_beam_1_change", 10,
 			&BreakBeam::breakBeamCallback, &break_beam);
 
-//	// Subscribe to the '/ariac/logical_camera_1' topic.
-//	ros::Subscriber logical_camera1_subscriber = node.subscribe(
-//			"/ariac/logical_camera_1", 10,
-//			&LogicalCamera::logical_camera_callback, &comp_class);
-//
+	// Subscribe to the '/ariac/logical_camera_1' topic.
+	ros::Subscriber logical_camera1_subscriber = node.subscribe(
+			"/ariac/logical_camera_1", 10,
+			&LogicalCamera::logicalCameraCallBack, &logicalCamera);
+
 //	// Subscribe to the '/ariac/logical_camera_2' topic.
 //	ros::Subscriber logical_camera2_subscriber = node.subscribe(
 //			"/ariac/logical_camera_2", 10,
@@ -97,6 +97,10 @@ Node::Node() {
 	ros::Subscriber laser_profiler_subscriber = node.subscribe(
 			"/ariac/laser_profiler_1", 10,
 			&LaserProfiler::laserCallBack , &laserProfiler);
+
+    ros::Subscriber orders_subscriber = node.subscribe(
+            "/ariac/orders", 10,
+            &Orders::orderCallback, &orders);
 
 //	ros::Subscriber depth_camera_subscriber = node.subscribe(
 //			"/ariac/depth_camera_1", 10,

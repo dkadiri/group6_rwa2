@@ -1171,6 +1171,33 @@ src/laser_profiler.cpp.s:
 	$(MAKE) -f CMakeFiles/ariac_example_node.dir/build.make CMakeFiles/ariac_example_node.dir/src/laser_profiler.cpp.s
 .PHONY : src/laser_profiler.cpp.s
 
+src/logical_camera.o: src/logical_camera.cpp.o
+
+.PHONY : src/logical_camera.o
+
+# target to build an object file
+src/logical_camera.cpp.o:
+	$(MAKE) -f CMakeFiles/ariac_example_node.dir/build.make CMakeFiles/ariac_example_node.dir/src/logical_camera.cpp.o
+.PHONY : src/logical_camera.cpp.o
+
+src/logical_camera.i: src/logical_camera.cpp.i
+
+.PHONY : src/logical_camera.i
+
+# target to preprocess a source file
+src/logical_camera.cpp.i:
+	$(MAKE) -f CMakeFiles/ariac_example_node.dir/build.make CMakeFiles/ariac_example_node.dir/src/logical_camera.cpp.i
+.PHONY : src/logical_camera.cpp.i
+
+src/logical_camera.s: src/logical_camera.cpp.s
+
+.PHONY : src/logical_camera.s
+
+# target to generate assembly for a file
+src/logical_camera.cpp.s:
+	$(MAKE) -f CMakeFiles/ariac_example_node.dir/build.make CMakeFiles/ariac_example_node.dir/src/logical_camera.cpp.s
+.PHONY : src/logical_camera.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -1372,6 +1399,9 @@ help:
 	@echo "... src/laser_profiler.o"
 	@echo "... src/laser_profiler.i"
 	@echo "... src/laser_profiler.s"
+	@echo "... src/logical_camera.o"
+	@echo "... src/logical_camera.i"
+	@echo "... src/logical_camera.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -62,6 +62,7 @@
 #include <../include/group6_rwa2/orders.h>
 #include <../include/group6_rwa2/proximity_sensor.h>
 #include <../include/group6_rwa2/laser_profiler.h>
+#include <../include/group6_rwa2/logical_camera.h>
 
 class Node {
 
@@ -75,6 +76,8 @@ private:
     Orders orders;
     BreakBeam break_beam;
     LaserProfiler laserProfiler;
+    LogicalCamera logicalCamera;
+
 	ros::Subscriber current_score_subscriber;
 	ros::Subscriber competition_state_subscriber;
 	
