@@ -11,11 +11,11 @@ public:
     AriacPartManager();
     ~AriacPartManager();
 
-    void set_part_type(std::string part_type);
+    void set_part_type(std::string);
 
-    void set_part_frame(int part_frame);
+    void set_part_frame(int);
 
-    void set_part_pose(geometry_msgs::Pose part_pose);
+    void set_part_pose(geometry_msgs::Pose);
 
     const std::string get_part_type();
 

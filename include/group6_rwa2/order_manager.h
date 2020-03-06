@@ -13,19 +13,21 @@
 #include <ros/ros.h>
 #include <tf/transform_listener.h>
 
-#include "sensor.h"
-#include "robot_controller.h"
+#include <../include/group6_rwa2/sensor.h>
+#include <../include/group6_rwa2/robot_controller.h>
+
+class AriacSensorManager;
 
 class AriacOrderManager {
 public:
     AriacOrderManager();
     ~AriacOrderManager();
-    void OrderCallback(const osrf_gear::Order::ConstPtr& order_msg);
+    void OrderCallback(const osrf_gear::Order::ConstPtr&);
     void ExecuteOrder();
     std::string GetProductFrame(std::string);
     std::map<std::string, std::list<std::pair<std::string,geometry_msgs::Pose>>> GetOrder();
-    bool PickAndPlace(std::pair<std::string,geometry_msgs::Pose> object_prop,int agvnum);
-    void SubmitAGV(int num);
+    bool PickAndPlace(std::pair<std::string,geometry_msgs::Pose>,int );
+    void SubmitAGV(int);
 
 private:
     ros::NodeHandle order_manager_nh_;

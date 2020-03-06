@@ -1,5 +1,6 @@
 
-
+#ifndef GROUP6_RWA2_SENSOR
+#define GROUP6_RWA2_SENSOR
 #include <list>
 #include <map>
 #include <string>
@@ -12,7 +13,7 @@
 #include <osrf_gear/LogicalCameraImage.h>
 #include <osrf_gear/Proximity.h>
 
-#include "ariac_part_manager.h"
+#include <../include/group6_rwa2/ariac_part_manager.h>
 
 class AriacSensorManager {
 public:
@@ -56,3 +57,4 @@ private:
     int camera1_frame_counter_, camera2_frame_counter_, camera3_frame_counter_;
 };
 
+#endif //GROUP6_RWA2_SENSOR
