@@ -129,49 +129,46 @@ file(INSTALL DESTINATION "/usr/local" TYPE FILE FILES "/home/raja/catkin_ws/src/
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/catkin_generated/installspace/group6_rwa2.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/catkin_generated/installspace/ariac_manager.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/group6_rwa2/cmake" TYPE FILE FILES
-    "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/catkin_generated/installspace/group6_rwa2Config.cmake"
-    "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/catkin_generated/installspace/group6_rwa2Config-version.cmake"
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ariac_manager/cmake" TYPE FILE FILES
+    "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/catkin_generated/installspace/ariac_managerConfig.cmake"
+    "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/catkin_generated/installspace/ariac_managerConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/group6_rwa2" TYPE FILE FILES "/home/raja/catkin_ws/src/group6_rwa2/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ariac_manager" TYPE FILE FILES "/home/raja/catkin_ws/src/group6_rwa2/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/group6_rwa2" TYPE PROGRAM FILES
-    "/home/raja/catkin_ws/src/group6_rwa2/script/ariac_example_node.py"
-    "/home/raja/catkin_ws/src/group6_rwa2/script/tf2_example.py"
-    )
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/group6_rwa2/ariac_example_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/group6_rwa2/ariac_example_node")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/main_node" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/main_node")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/group6_rwa2/ariac_example_node"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/main_node"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/group6_rwa2" TYPE EXECUTABLE FILES "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/devel/lib/group6_rwa2/ariac_example_node")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/group6_rwa2/ariac_example_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/group6_rwa2/ariac_example_node")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/devel/lib/ariac_manager/main_node")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/main_node" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/main_node")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/group6_rwa2/ariac_example_node"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/main_node"
          OLD_RPATH "/opt/ros/melodic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/group6_rwa2/ariac_example_node")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/main_node")
     endif()
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/group6_rwa2/config" TYPE FILE FILES "/home/raja/catkin_ws/src/group6_rwa2/config/sample_gear_conf.yaml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ariac_manager/config" TYPE FILE FILES "/home/raja/catkin_ws/src/group6_rwa2/config/my_sample_sensors.yaml")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/ariac_manager" TYPE DIRECTORY FILES "/home/raja/catkin_ws/src/group6_rwa2/include/ariac_manager/")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

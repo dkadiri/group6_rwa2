@@ -27,7 +27,7 @@ sensors:
   logical_camera_4:
     type: logical_camera
     pose:
-      xyz: [1.21, -0.5, 1.6]
+      xyz: [1.21, 0.5, 1.4]
       rpy: [1.5707, 1.5707, 0]
   depth_camera_1:
     type: depth_camera

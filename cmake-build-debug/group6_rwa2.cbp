@@ -1022,6 +1022,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/raja/catkin_ws/src/group6_rwa2/include/group6_rwa2/arm.h">
+			<Option target="ariac_example_node"/>
+		</Unit>
 		<Unit filename="/home/raja/catkin_ws/src/group6_rwa2/src/break_beam.cpp">
 			<Option target="ariac_example_node"/>
 		</Unit>

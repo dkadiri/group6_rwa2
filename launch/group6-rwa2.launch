@@ -14,13 +14,7 @@
   <arg name="fill_demo_shipment" default="false" />
   <arg unless="$(arg fill_demo_shipment)" name="fill_demo_shipment_args" value="" />
   <arg     if="$(arg fill_demo_shipment)" name="fill_demo_shipment_args" value="--fill-demo-shipment" />
-  <node
-	pkg="group6_rwa2"
-	name="ariac_example_node"
-	type="ariac_example_node"
-	output="screen"
-	launch-prefix="gnome-terminal --command"
-    />  
+  
   <node name="ariac_sim" pkg="osrf_gear" type="gear.py"
         args="--development-mode
           $(arg verbose_args)
