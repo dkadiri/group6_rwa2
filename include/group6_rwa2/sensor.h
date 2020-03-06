@@ -13,7 +13,7 @@
 #include <osrf_gear/LogicalCameraImage.h>
 #include <osrf_gear/Proximity.h>
 
-#include <../include/group6_rwa2/ariac_part_manager.h>
+#include <ariac_part_manager.h>
 
 class AriacSensorManager {
 public:

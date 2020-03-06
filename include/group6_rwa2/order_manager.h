@@ -13,8 +13,8 @@
 #include <ros/ros.h>
 #include <tf/transform_listener.h>
 
-#include <../include/group6_rwa2/sensor.h>
-#include <../include/group6_rwa2/robot_controller.h>
+#include <sensor.h>
+#include <robot_controller.h>
 
 class AriacSensorManager;
 
