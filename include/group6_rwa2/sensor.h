@@ -19,11 +19,10 @@ class AriacSensorManager {
 public:
     AriacSensorManager();
     ~AriacSensorManager();
-    void LogicalCamera1Callback(const osrf_gear::LogicalCameraImage::ConstPtr&);
-    void LogicalCamera2Callback(const osrf_gear::LogicalCameraImage::ConstPtr &);
-    void LogicalCamera3Callback(const osrf_gear::LogicalCameraImage::ConstPtr &);
-
-    void break_beam_callback(const osrf_gear::Proximity::ConstPtr & msg);
+    void logicalCamera1Callback(const osrf_gear::LogicalCameraImage::ConstPtr&);
+    void logicalCamera2Callback(const osrf_gear::LogicalCameraImage::ConstPtr &);
+    void logicalCamera3Callback(const osrf_gear::LogicalCameraImage::ConstPtr &);
+    void breakBeamCallback(const osrf_gear::Proximity::ConstPtr &);
 
 
     geometry_msgs::Pose GetPartPose(const std::string& src_frame,
