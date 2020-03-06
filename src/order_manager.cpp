@@ -4,6 +4,7 @@
 
 #include "order_manager.h"
 #include <osrf_gear/AGVControl.h>
+#include <string>
 #include <ros/ros.h>
 #include <std_srvs/Trigger.h>
 

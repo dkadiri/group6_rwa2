@@ -13,17 +13,16 @@
 #include <osrf_gear/LogicalCameraImage.h>
 #include <osrf_gear/Proximity.h>
 
-#include <../include/group6_rwa2/ariac_part_manager.h>
+#include <ariac_part_manager.h>
 
 class AriacSensorManager {
 public:
     AriacSensorManager();
     ~AriacSensorManager();
-    void LogicalCamera1Callback(const osrf_gear::LogicalCameraImage::ConstPtr&);
-    void LogicalCamera2Callback(const osrf_gear::LogicalCameraImage::ConstPtr &);
-    void LogicalCamera3Callback(const osrf_gear::LogicalCameraImage::ConstPtr &);
-
-    void break_beam_callback(const osrf_gear::Proximity::ConstPtr & msg);
+    void logicalCamera1Callback(const osrf_gear::LogicalCameraImage::ConstPtr&);
+    void logicalCamera2Callback(const osrf_gear::LogicalCameraImage::ConstPtr &);
+    void logicalCamera3Callback(const osrf_gear::LogicalCameraImage::ConstPtr &);
+    void breakBeamCallback(const osrf_gear::Proximity::ConstPtr &);
 
 
     geometry_msgs::Pose GetPartPose(const std::string& src_frame,
