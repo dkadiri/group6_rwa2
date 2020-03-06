@@ -52,7 +52,7 @@ include_directories(include/group6_rwa2 ${catkin_INCLUDE_DIRS} )
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/ariac_manager_node.cpp)
-add_executable(main_node src/main.cpp src/robot_controller.cpp src/sensor.cpp src/order_manager.cpp src/ariac_part_manager.cpp)
+add_executable(main_node src/main.cpp src/robot_controller.cpp src/sensor.cpp src/order_manager.cpp src/competition.cpp src/ariac_part_manager.cpp)
 
 
 ## Add cmake target dependencies of the executable
