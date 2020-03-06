@@ -7,7 +7,7 @@
 
 #include <algorithm>
 #include <vector>
-
+#include <../include/group6_rwa2/competition.h>
 #include <ros/ros.h>
 
 #include <osrf_gear/LogicalCameraImage.h>
@@ -20,12 +20,9 @@
 #include <std_msgs/String.h>
 #include <std_srvs/Trigger.h>
 #include <trajectory_msgs/JointTrajectory.h>
-#include "../include/competition.h"
-
 
 Competition::Competition(ros::NodeHandle & node)
-: current_score_(0), arm_1_has_been_zeroed_(false), arm_2_has_been_zeroed_(false)
-{
+: current_score_(0), arm_1_has_been_zeroed_(false), arm_2_has_been_zeroed_(false) {
 	// %Tag(ADV_CMD)%
 	arm_1_joint_trajectory_publisher_ = node.advertise<trajectory_msgs::JointTrajectory>(
 			"/ariac/arm1/arm/command", 10);
@@ -70,6 +67,7 @@ void Competition::competition_state_callback(const std_msgs::String::ConstPtr & 
 
 
 /// Called when a new JointState message is received.
+
 void Competition::arm_1_joint_state_callback(
 		const sensor_msgs::JointState::ConstPtr & joint_state_msg)
 {

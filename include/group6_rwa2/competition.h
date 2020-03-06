@@ -21,7 +21,7 @@
 #include <std_srvs/Trigger.h>
 #include <trajectory_msgs/JointTrajectory.h>
 
-class AriacOrderManager;
+//class AriacOrderManager;
 
 class Competition {
 private:
