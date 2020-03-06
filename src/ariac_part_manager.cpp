@@ -2,7 +2,7 @@
 // Created by zeid on 3/1/20.
 //
 
-#include "ariac_part_manager.h"
+#include "../include/group6_rwa2/ariac_part_manager.h"
 
 AriacPartManager::AriacPartManager():part_type_{}, part_frame_{}{};
 AriacPartManager::~AriacPartManager(){};
@@ -19,12 +19,12 @@ void AriacPartManager::set_part_pose(geometry_msgs::Pose part_pose){
     part_pose_ = part_pose;
 };
 
-const std::string get_part_type(){
+const std::string AriacPartManager::get_part_type(){
     return part_type_;
 };
-const int get_part_frame(){
+const int AriacPartManager::get_part_frame(){
     return part_frame_;
 };
-const geometry_msgs::Pose get_part_pose(){
+const geometry_msgs::Pose AriacPartManager::get_part_pose(){
     return part_pose_ ;
 };

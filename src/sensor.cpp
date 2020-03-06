@@ -99,6 +99,12 @@ void AriacSensorManager::LogicalCamera3Callback(const osrf_gear::LogicalCameraIm
     this->BuildProductFrames(3);
 }
 
+void AriacSensorManager::break_beam_callback(const osrf_gear::Proximity::ConstPtr & msg) {
+    if (msg->object_detected) {  // If there is an object in proximity.
+        ROS_INFO("Break beam triggered.");
+    }
+}
+
 void AriacSensorManager::BuildProductFrames(int camera_id){
     if (camera_id == 1) {
         for (auto& msg : current_parts_1_.models) {

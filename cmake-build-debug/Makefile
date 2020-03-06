@@ -1428,6 +1428,33 @@ gtest/fast:
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+src/ariac_part_manager.o: src/ariac_part_manager.cpp.o
+
+.PHONY : src/ariac_part_manager.o
+
+# target to build an object file
+src/ariac_part_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/src/ariac_part_manager.cpp.o
+.PHONY : src/ariac_part_manager.cpp.o
+
+src/ariac_part_manager.i: src/ariac_part_manager.cpp.i
+
+.PHONY : src/ariac_part_manager.i
+
+# target to preprocess a source file
+src/ariac_part_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/src/ariac_part_manager.cpp.i
+.PHONY : src/ariac_part_manager.cpp.i
+
+src/ariac_part_manager.s: src/ariac_part_manager.cpp.s
+
+.PHONY : src/ariac_part_manager.s
+
+# target to generate assembly for a file
+src/ariac_part_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/src/ariac_part_manager.cpp.s
+.PHONY : src/ariac_part_manager.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -1646,6 +1673,9 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... src/ariac_part_manager.o"
+	@echo "... src/ariac_part_manager.i"
+	@echo "... src/ariac_part_manager.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -1,8 +1,3 @@
-//
-// Created by zeid on 2/27/20.
-//
-
-#pragma once
 
 
 #include <list>
@@ -15,6 +10,7 @@
 #include <ros/ros.h>
 #include <tf/transform_listener.h>
 #include <osrf_gear/LogicalCameraImage.h>
+#include <osrf_gear/Proximity.h>
 
 #include "ariac_part_manager.h"
 
@@ -25,6 +21,8 @@ public:
     void LogicalCamera1Callback(const osrf_gear::LogicalCameraImage::ConstPtr&);
     void LogicalCamera2Callback(const osrf_gear::LogicalCameraImage::ConstPtr &);
     void LogicalCamera3Callback(const osrf_gear::LogicalCameraImage::ConstPtr &);
+
+    void break_beam_callback(const osrf_gear::Proximity::ConstPtr & msg);
 
 
     geometry_msgs::Pose GetPartPose(const std::string& src_frame,
