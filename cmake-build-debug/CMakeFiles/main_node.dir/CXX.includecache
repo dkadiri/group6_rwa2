@@ -12,7 +12,7 @@ string
 geometry_msgs/Pose.h
 -
 
-../include/group6_rwa2/sensor.h
+/home/raja/catkin_ws/src/group6_rwa2/include/group6_rwa2/sensor.h
 list
 -
 map
@@ -37,8 +37,8 @@ ariac_part_manager.h
 -
 
 /home/raja/catkin_ws/src/group6_rwa2/src/sensor.cpp
-sensor.h
-/home/raja/catkin_ws/src/group6_rwa2/src/sensor.h
+../include/group6_rwa2/sensor.h
+/home/raja/catkin_ws/src/group6_rwa2/include/group6_rwa2/sensor.h
 
 /opt/ros/melodic/include/boost_161_condition_variable.h
 boost/thread/detail/platform.hpp

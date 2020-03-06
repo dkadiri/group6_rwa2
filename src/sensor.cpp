@@ -1,7 +1,7 @@
 //
 // Created by zeid on 2/27/20.
 //
-#include "sensor.h"
+#include "../include/group6_rwa2/sensor.h"
 
 AriacSensorManager::AriacSensorManager():
 camera1_part_list{},
@@ -14,6 +14,9 @@ camera3_part_list{}{
 			&AriacSensorManager::logicalCamera2Callback, this);
 	camera_3_subscriber_ = sensor_nh_.subscribe("/ariac/logical_camera_3", 10,
 			&AriacSensorManager::logicalCamera3Callback, this);
+    camera_4_subscriber_ = sensor_nh_.subscribe("/ariac/logical_camera_4", 10,
+                                                &AriacSensorManager::logicalCamera4Callback, this);
+
 	camera1_frame_counter_ = 1;
 	camera2_frame_counter_ = 1;
 	camera3_frame_counter_ = 1;
@@ -97,6 +100,17 @@ void AriacSensorManager::logicalCamera3Callback(const osrf_gear::LogicalCameraIm
 
 	current_parts_3_ = *image_msg;
 	this->BuildProductFrames(3);
+}
+
+void AriacSensorManager::logicalCamera4Callback(const osrf_gear::LogicalCameraImage::ConstPtr & image_msg){
+    if (init_) return;
+    ROS_INFO_STREAM_THROTTLE(10,
+                             "Logical camera 2: '" << image_msg->models.size() << "' objects.");
+    if (image_msg->models.size() == 0)
+        ROS_ERROR_STREAM("Logical Camera 2 does not see anything");
+
+    current_parts_4_ = *image_msg;
+    this->BuildProductFrames(4);
 }
 
 
