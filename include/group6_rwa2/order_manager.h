@@ -22,7 +22,7 @@ public:
     ~AriacOrderManager();
     void OrderCallback(const osrf_gear::Order::ConstPtr& order_msg);
     void ExecuteOrder();
-    std::string GetProductFrame(std::string product_type);
+    std::string GetProductFrame(std::string);
     std::map<std::string, std::list<std::pair<std::string,geometry_msgs::Pose>>> GetOrder();
     bool PickAndPlace(std::pair<std::string,geometry_msgs::Pose> object_prop,int agvnum);
     void SubmitAGV(int num);

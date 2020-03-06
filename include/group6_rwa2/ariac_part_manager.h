@@ -1,9 +1,8 @@
 //
 // Created by zeid on 3/1/20.
 //
-
-#pragma once
-
+#ifndef GROUP6_RWA2_ARIAC_PART_MANAGER
+#define GROUP6_RWA2_ARIAC_PART_MANAGER
 #include <string>
 #include <geometry_msgs/Pose.h>
 
@@ -29,4 +28,4 @@ public:
     geometry_msgs::Pose part_pose_;
     int part_frame_;
 };
-
+#endif //GROUP6_RWA2_ARIAC_PART_MANAGER

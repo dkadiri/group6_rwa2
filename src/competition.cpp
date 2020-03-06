@@ -7,7 +7,6 @@
 
 #include <algorithm>
 #include <vector>
-#include <../include/group6_rwa2/competition.h>
 #include <ros/ros.h>
 
 #include <osrf_gear/LogicalCameraImage.h>
@@ -20,6 +19,7 @@
 #include <std_msgs/String.h>
 #include <std_srvs/Trigger.h>
 #include <trajectory_msgs/JointTrajectory.h>
+#include "../include/group6_rwa2/competition.h"
 
 Competition::Competition(ros::NodeHandle & node)
 : current_score_(0), arm_1_has_been_zeroed_(false), arm_2_has_been_zeroed_(false) {
@@ -121,20 +121,4 @@ void Competition::send_arm_to_zero_state(ros::Publisher & joint_trajectory_publi
 	msg.points[0].time_from_start = ros::Duration(0.001);
 	ROS_INFO_STREAM("Sending command:\n" << msg);
 	joint_trajectory_publisher.publish(msg);
-}
-// %EndTag(ARM_ZERO)%
-
-/// Called when a new LogicalCameraImage message is received.
-void Competition::logical_camera_callback(
-		const osrf_gear::LogicalCameraImage::ConstPtr & image_msg)
-{
-	ROS_INFO_STREAM_THROTTLE(10,
-			"Logical camera: '" << image_msg->models.size() << "' objects.");
-}
-
-/// Called when a new Proximity message is received.
-void Competition::break_beam_callback(const osrf_gear::Proximity::ConstPtr & msg) {
-	if (msg->object_detected) {  // If there is an object in proximity.
-		ROS_INFO("Break beam triggered.");
-	}
 }
