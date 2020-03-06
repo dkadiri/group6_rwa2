@@ -9,11 +9,11 @@ camera2_part_list{},
 camera3_part_list{}{
 	ROS_INFO_STREAM(">>>>> Subscribing to logical sensors");
 	camera_1_subscriber_ = sensor_nh_.subscribe("/ariac/logical_camera_1", 10,
-			&AriacSensorManager::LogicalCamera1Callback, this);
+			&AriacSensorManager::logicalCamera1Callback, this);
 	camera_2_subscriber_ = sensor_nh_.subscribe("/ariac/logical_camera_2", 10,
-			&AriacSensorManager::LogicalCamera2Callback, this);
+			&AriacSensorManager::logicalCamera2Callback, this);
 	camera_3_subscriber_ = sensor_nh_.subscribe("/ariac/logical_camera_3", 10,
-			&AriacSensorManager::LogicalCamera3Callback, this);
+			&AriacSensorManager::logicalCamera3Callback, this);
 	camera1_frame_counter_ = 1;
 	camera2_frame_counter_ = 1;
 	camera3_frame_counter_ = 1;
