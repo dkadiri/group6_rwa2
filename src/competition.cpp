@@ -2,9 +2,6 @@
 // Created by zeid on 2/28/20.
 //
 
-#ifndef ARIAC_MANAGER_COMPETITION_H
-#define ARIAC_MANAGER_COMPETITION_H
-
 #include <algorithm>
 #include <vector>
 #include <ros/ros.h>
