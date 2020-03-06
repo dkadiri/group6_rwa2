@@ -1289,6 +1289,9 @@
 		<Unit filename="/home/raja/catkin_ws/src/group6_rwa2/src/ariac_part_manager.cpp">
 			<Option target="main_node"/>
 		</Unit>
+		<Unit filename="/home/raja/catkin_ws/src/group6_rwa2/src/competition.cpp">
+			<Option target="main_node"/>
+		</Unit>
 		<Unit filename="/home/raja/catkin_ws/src/group6_rwa2/src/main.cpp">
 			<Option target="main_node"/>
 		</Unit>

@@ -1455,6 +1455,33 @@ src/ariac_part_manager.cpp.s:
 	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/src/ariac_part_manager.cpp.s
 .PHONY : src/ariac_part_manager.cpp.s
 
+src/competition.o: src/competition.cpp.o
+
+.PHONY : src/competition.o
+
+# target to build an object file
+src/competition.cpp.o:
+	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/src/competition.cpp.o
+.PHONY : src/competition.cpp.o
+
+src/competition.i: src/competition.cpp.i
+
+.PHONY : src/competition.i
+
+# target to preprocess a source file
+src/competition.cpp.i:
+	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/src/competition.cpp.i
+.PHONY : src/competition.cpp.i
+
+src/competition.s: src/competition.cpp.s
+
+.PHONY : src/competition.s
+
+# target to generate assembly for a file
+src/competition.cpp.s:
+	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/src/competition.cpp.s
+.PHONY : src/competition.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -1676,6 +1703,9 @@ help:
 	@echo "... src/ariac_part_manager.o"
 	@echo "... src/ariac_part_manager.i"
 	@echo "... src/ariac_part_manager.s"
+	@echo "... src/competition.o"
+	@echo "... src/competition.i"
+	@echo "... src/competition.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
