@@ -1,8 +1,0 @@
-prefix=/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/devel
-
-Name: group6_rwa2
-Description: Description of group6_rwa2
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
