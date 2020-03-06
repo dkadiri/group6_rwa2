@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/main_node.dir/src/ariac_part_manager.cpp.o"
   "CMakeFiles/main_node.dir/src/main.cpp.o"
   "CMakeFiles/main_node.dir/src/order_manager.cpp.o"
   "CMakeFiles/main_node.dir/src/robot_controller.cpp.o"

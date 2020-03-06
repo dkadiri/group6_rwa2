@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <string>
+#include <geometry_msgs/Pose.h>
 
 class AriacPartManager {
 public:

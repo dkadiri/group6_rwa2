@@ -10,5 +10,6 @@
 export CMAKE_PREFIX_PATH="/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/devel:$CMAKE_PREFIX_PATH"
 export GAZEBO_MODEL_PATH="/opt/ros/melodic/share/osrf_gear/models:$GAZEBO_MODEL_PATH"
 export LD_LIBRARY_PATH="/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/devel/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/raja/catkin_ws/src/group6_rwa2/cmake-build-debug/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/raja/catkin_ws/src/group6_rwa2:$ROS_PACKAGE_PATH"
