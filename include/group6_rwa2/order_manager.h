@@ -13,10 +13,9 @@
 #include <ros/ros.h>
 #include <tf/transform_listener.h>
 
-#include <sensor.h>
 #include <robot_controller.h>
 
-class AriacSensorManager;
+// class AriacSensorManager;
 
 class AriacOrderManager {
 public:
@@ -27,13 +26,15 @@ public:
     std::string GetProductFrame(std::string);
     std::map<std::string, std::list<std::pair<std::string,geometry_msgs::Pose>>> GetOrder();
     bool PickAndPlace(std::pair<std::string,geometry_msgs::Pose>,int );
+    std::vector<std::string> getProductType();
     void SubmitAGV(int);
 
 private:
     ros::NodeHandle order_manager_nh_;
     ros::Subscriber order_subscriber_;
     std::vector<osrf_gear::Order> received_orders_;
-    AriacSensorManager camera_;
+    std::vector<std::string> product_type;
+    // AriacSensorManager camera_;
     RobotController arm1_;
 //    RobotController arm2_;
     tf::TransformListener part_tf_listener_;

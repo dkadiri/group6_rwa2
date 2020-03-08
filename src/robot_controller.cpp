@@ -16,6 +16,7 @@ robot_controller_options("manipulator",
 robot_move_group_(robot_controller_options) {
     ROS_WARN(">>>>> RobotController");
 
+    // setting parameters of planner
     robot_move_group_.setPlanningTime(20);
     robot_move_group_.setNumPlanningAttempts(10);
     robot_move_group_.setPlannerId("RRTConnectkConfigDefault");
