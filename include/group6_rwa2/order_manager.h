@@ -45,5 +45,6 @@ public:
 	std::vector<std::string> getProductType();
 	void setProductType();
 	void SubmitAGV(int);
+	ros::NodeHandle* getnode();
 };
 

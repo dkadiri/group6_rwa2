@@ -5,11 +5,11 @@
 
 AriacSensorManager::AriacSensorManager(AriacOrderManager* obj): orderManager(obj)
 {
+	sensor_nh_ = orderManager->getnode();
 	ROS_INFO_STREAM(">>>>> Subscribing to logical sensors");
 
-	camera_4_subscriber_ = sensor_nh_.subscribe("/ariac/logical_camera_4", &AriacSensorManager::logicalCamera4Callback, this);
-	breakbeam_subscriber = sensor_nh_.subscribe("/ariac/break_beam_1", 10,
-			&AriacSensorManager::breakBeamCallback,this);
+	camera_4_subscriber_ = sensor_nh_->subscribe("/ariac/logical_camera_4", 1 , &AriacSensorManager::logicalCamera4Callback, this);
+//	breakbeam_subscriber = sensor_nh_->subscribe("/ariac/break_beam_1", 10,	&AriacSensorManager::breakBeamCallback,this);
 //	tracking_part = new osrf_gear::Model();
 	tracking_part= nullptr;
 }

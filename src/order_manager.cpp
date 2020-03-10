@@ -190,3 +190,8 @@ void AriacOrderManager::SubmitAGV(int num) {
     } else
         ROS_INFO("Service succeeded.");
 }
+
+
+ros::NodeHandle* AriacOrderManager::getnode() {
+	return order_manager_nh_;
+}

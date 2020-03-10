@@ -28,7 +28,7 @@
 class AriacSensorManager {
 
 private:
-	ros::NodeHandle sensor_nh_;
+	ros::NodeHandle* sensor_nh_;
 //	AriacOrderManager oM;
 	AriacOrderManager* orderManager;
 
