@@ -81,11 +81,15 @@ void AriacSensorManager::logicalCamera4Callback(
     setPose(sensor_pose,transformStamped1);
     br_w_s.sendTransform(transformStamped1);
     ros::Duration(0.2).sleep();
+    auto order = orderManager.getProductType();
     for(auto it =image_msg->models.begin(); it!=image_msg->models.end();++it) {
         ROS_INFO_STREAM("debug : " << *it << std::endl);
+        ROS_INFO_STREAM("debug : " << orderManager.getProductType().size() << std::endl);
 
-        for (auto o_it = orderManager.getProductType().begin();
-             o_it != orderManager.getProductType().end(); ++o_it){
+
+
+        for (auto o_it = order.begin();
+             o_it != order.end(); ++o_it){
             ROS_INFO_STREAM("debug : " << *o_it << std::endl);
             if (tracking_part == nullptr && it->type == *o_it) {
                 *tracking_part = *it;
