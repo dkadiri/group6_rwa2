@@ -25,6 +25,8 @@ AriacOrderManager::~AriacOrderManager(){}
 void AriacOrderManager::OrderCallback(const osrf_gear::Order::ConstPtr& order_msg) {
     ROS_WARN(">>>>> OrderCallback");
     received_orders_.push_back(*order_msg);
+    ROS_INFO_STREAM("no of orders "<< received_orders_.size() << std::endl);
+    setProductType();
 }
 
 void AriacOrderManager::setProductType(){
@@ -44,7 +46,7 @@ void AriacOrderManager::setProductType(){
             }
         }
     }
-    ROS_INFO_STREAM("reading order."<< product_type.at(0) << std::endl);
+    ROS_INFO_STREAM("no of products "<< product_type.size() << std::endl);
 
 
 }

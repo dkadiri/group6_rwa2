@@ -3,7 +3,7 @@
 //
 #include "../include/group6_rwa2/sensor.h"
 
-AriacSensorManager::AriacSensorManager(AriacOrderManager & obj):orderManager(obj)
+AriacSensorManager::AriacSensorManager(AriacOrderManager & obj): orderManager(obj)
 {
 	ROS_INFO_STREAM(">>>>> Subscribing to logical sensors");
 
@@ -82,6 +82,7 @@ void AriacSensorManager::logicalCamera4Callback(
     br_w_s.sendTransform(transformStamped1);
     ros::Duration(0.2).sleep();
     for(auto it =image_msg->models.begin(); it!=image_msg->models.end();++it) {
+        ROS_INFO_STREAM("debug : " << *it << std::endl);
 
         for (auto o_it = orderManager.getProductType().begin();
              o_it != orderManager.getProductType().end(); ++o_it){

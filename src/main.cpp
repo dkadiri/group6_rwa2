@@ -55,7 +55,6 @@ int main(int argc, char **argv) {
     ros::init(argc, argv, "ariac_manager_node");
     ros::NodeHandle node;
     AriacOrderManager manager;
-    manager.setProductType();
     Competition comp(node);
     AriacSensorManager sense(manager);
 

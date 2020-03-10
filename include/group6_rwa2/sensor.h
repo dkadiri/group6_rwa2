@@ -23,7 +23,6 @@
 #include "order_manager.h"
 
 
-class AriacOrderManger;
 
 class AriacSensorManager {
 public:
