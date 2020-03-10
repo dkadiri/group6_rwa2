@@ -1,14 +1,13 @@
 //
 // Created by zeid on 2/27/20.
 //
-#include <../include/group6_rwa2/sensor.h>
+#include "../include/group6_rwa2/sensor.h"
 
 AriacSensorManager::AriacSensorManager(AriacOrderManager* obj): orderManager(obj)
 {
 	ROS_INFO_STREAM(">>>>> Subscribing to logical sensors");
 
-	camera_4_subscriber_ = sensor_nh_.subscribe("/ariac/logical_camera_4", 10,
-			&AriacSensorManager::logicalCamera4Callback, this);
+	camera_4_subscriber_ = sensor_nh_.subscribe("/ariac/logical_camera_4", &AriacSensorManager::logicalCamera4Callback, this);
 	breakbeam_subscriber = sensor_nh_.subscribe("/ariac/break_beam_1", 10,
 			&AriacSensorManager::breakBeamCallback,this);
 //	tracking_part = new osrf_gear::Model();
@@ -83,23 +82,26 @@ void AriacSensorManager::logicalCamera4Callback(
 	ros::Duration(0.2).sleep();
 	auto order = orderManager->getProductType();
 	for(auto it =image_msg->models.begin(); it!=image_msg->models.end();++it) {
-		ROS_INFO_STREAM("debug : " << *it << std::endl);
+//		ROS_INFO_STREAM("debug : " << *it << std::endl);
 
 
 		for (auto o_it = order.begin();o_it != order.end(); ++o_it) {
-			ROS_INFO_STREAM("debug : " << *o_it << std::endl);
+//			ROS_INFO_STREAM("debug : " << *o_it << std::endl);
 			if (tracking_part == nullptr && it->type.compare(*o_it)) {
-				tracking_part = it;
+				tracking_part = new osrf_gear::Model();
+				tracking_part->type = it->type;
+				tracking_part->pose = it->pose;
 				setTransform();
 				ROS_INFO_STREAM("tracking part id: " << tracking_part->type << std::endl);
 			}
 
 		}
 
-		if (it->type == tracking_part->type && it->pose.position.y < tracking_part->pose.position.y) {
+		if (it->type.compare(tracking_part->type) == 0 && it->pose.position.y < tracking_part->pose.position.y) {
 			setPose(it->pose, tracking_part->pose);
 			setTransform();
-			ROS_INFO_STREAM("tracking pose: " << tracking_part->pose << std::endl);
+			ROS_INFO_STREAM("Tracking type: " << tracking_part->type << std::endl);
+			ROS_INFO_STREAM("Tracking pose: " << tracking_part->pose << std::endl);
 		}
 	}
 }

@@ -4,8 +4,8 @@
 #include <tf/tf.h>
 #include <iostream>
 #include "order_manager.h"
-#include <../include/group6_rwa2/competition.h>
-#include <../include/group6_rwa2/sensor.h>
+#include "../include/group6_rwa2/competition.h"
+#include "../include/group6_rwa2/sensor.h"
 
 
 void StartCompetition(ros::NodeHandle & node) {
