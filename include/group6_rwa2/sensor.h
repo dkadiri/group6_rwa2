@@ -20,7 +20,7 @@
 #include <tf2_ros/transform_listener.h>
 #include <geometry_msgs/TransformStamped.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
-#include <order_manager.h>
+#include "order_manager.h"
 
 
 class AriacOrderManger;
@@ -33,13 +33,15 @@ public:
     void set_pose(geometry_msgs::TransformStamped &transformStamped, const geometry_msgs::Pose pose);
     void logicalCamera4Callback(const osrf_gear::LogicalCameraImage::ConstPtr &);
     void breakBeamCallback(const osrf_gear::Proximity::ConstPtr &);
+    bool isObjectDetected();
 
 
 private:
     ros::NodeHandle sensor_nh_;
-    AriacOrderManger orderManager;
+    AriacOrderManager orderManager;
 
     ros::Subscriber camera_4_subscriber_;
+    ros::Subscriber breakbeam_subscriber;
     geometry_msgs::TransformStamped transformStamped1;
     geometry_msgs::TransformStamped transformStamped2;
     geometry_msgs::TransformStamped transformStamped3;
@@ -51,6 +53,7 @@ private:
     tf::StampedTransform camera_tf_transform_;
 
     osrf_gear::LogicalCameraImage current_parts_4_;
+    bool object_detected = false;
     std::map<std::string, std::vector<geometry_msgs::Pose>> part_list_;
 
     std::map<std::string, std::vector<std::string>> product_frame_list_;

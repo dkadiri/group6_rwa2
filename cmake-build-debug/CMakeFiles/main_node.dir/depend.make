@@ -1281,8 +1281,8 @@ CMakeFiles/main_node.dir/src/robot_controller.cpp.o: /usr/include/eigen3/Eigen/s
 CMakeFiles/main_node.dir/src/robot_controller.cpp.o: /usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 
 CMakeFiles/main_node.dir/src/sensor.cpp.o: ../include/group6_rwa2/ariac_part_manager.h
-CMakeFiles/main_node.dir/src/sensor.cpp.o: ../include/group6_rwa2/order_manager.h
 CMakeFiles/main_node.dir/src/sensor.cpp.o: ../include/group6_rwa2/robot_controller.h
+CMakeFiles/main_node.dir/src/sensor.cpp.o: ../include/group6_rwa2/order_manager.h
 CMakeFiles/main_node.dir/src/sensor.cpp.o: ../include/group6_rwa2/sensor.h
 CMakeFiles/main_node.dir/src/sensor.cpp.o: ../src/sensor.cpp
 CMakeFiles/main_node.dir/src/sensor.cpp.o: /opt/ros/melodic/include/actionlib/action_definition.h

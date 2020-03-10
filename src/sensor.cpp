@@ -9,7 +9,8 @@ AriacSensorManager::AriacSensorManager()
 
     camera_4_subscriber_ = sensor_nh_.subscribe("/ariac/logical_camera_4", 10,
                                                 &AriacSensorManager::logicalCamera4Callback, this);
-
+    breakbeam_subscriber = sensor_nh_.subscribe("/ariac/break_beam_1", 10,
+                                                &AriacSensorManager::breakBeamCallback,this);
 }
 
 AriacSensorManager::~AriacSensorManager() {}
@@ -47,9 +48,9 @@ void AriacSensorManager::logicalCamera4Callback(
     set_pose(transformStamped1, sensor_pose);
     br_w_s.sendTransform(transformStamped1);
     ros::Duration(0.2).sleep();
-        if(!image_msg->models.empty()){
             for(auto it =image_msg->models.begin(); it!=image_msg->models.end();++it) {
-                if(orderManger.getProductType().front() == it->type){
+                for (auto o_it = orderManager.getProductType().begin();o_it != orderManager.getProductType().end(); ++o_it )
+                if(it->type  ==  *o_it){
                     set_pose(transformStamped2, it->pose);
                     br_s_c.sendTransform(transformStamped2);
                     ros::Duration(0.2).sleep();
@@ -74,23 +75,24 @@ void AriacSensorManager::logicalCamera4Callback(
 
             }
 
-
-    }
-
 }
 
 
-
-
-
+bool AriacSensorManager::isObjectDetected() {
+    return object_detected;
+}
 
 
 
 void AriacSensorManager::breakBeamCallback(const osrf_gear::Proximity::ConstPtr & msg) {
 
-//	if (msg->object_detected) {  // If there is an object in proximity.
-//		ROS_INFO("Break beam triggered.");
-//	}
+	if (msg->object_detected) {  // If there is an object in proximity.
+		ROS_INFO("Break beam triggered.");
+		object_detected = true;
+	}
+	else{
+	    object_detected = false;
+	}
 }
 
 
