@@ -5,6 +5,7 @@
 #include <iostream>
 #include "order_manager.h"
 #include "../include/group6_rwa2/competition.h"
+#include "../include/group6_rwa2/sensor.h"
 
 
 void StartCompetition(ros::NodeHandle & node) {
@@ -54,7 +55,9 @@ int main(int argc, char **argv) {
     ros::init(argc, argv, "ariac_manager_node");
     ros::NodeHandle node;
     AriacOrderManager manager;
+    manager.setProductType();
     Competition comp(node);
+    AriacSensorManager sense(manager);
 
     ros::Subscriber current_score_subscriber = node.subscribe(
             "/ariac/current_score", 10,
@@ -76,6 +79,7 @@ int main(int argc, char **argv) {
 //    manager.ExecuteOrder();
 
     ros::spin();  // This executes callbacks on new data until ctrl-c.
+
 
     //manager.ExecuteOrder();
     //EndCompetition(node);

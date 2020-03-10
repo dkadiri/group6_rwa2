@@ -25,4 +25,6 @@
           -f $(find osrf_gear)/config/sample.yaml
           $(find group6_rwa2)/config/my_sample_sensors.yaml
           " required="true" output="screen" />
+
+
 </launch>

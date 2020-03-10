@@ -24,9 +24,11 @@ CMakeFiles/main_node.dir/src/ariac_part_manager.cpp.o
  /opt/ros/melodic/include/ros/types.h
 CMakeFiles/main_node.dir/src/competition.cpp.o
 CMakeFiles/main_node.dir/src/main.cpp.o
+ ../include/group6_rwa2/ariac_part_manager.h
  ../include/group6_rwa2/order_manager.h
  ../include/group6_rwa2/robot_controller.h
  /home/raja/catkin_ws/src/group6_rwa2/include/group6_rwa2/competition.h
+ /home/raja/catkin_ws/src/group6_rwa2/include/group6_rwa2/sensor.h
  /home/raja/catkin_ws/src/group6_rwa2/src/main.cpp
  /opt/ros/melodic/include/actionlib/action_definition.h
  /opt/ros/melodic/include/actionlib/client/action_client.h
@@ -60,6 +62,8 @@ CMakeFiles/main_node.dir/src/main.cpp.o
  /opt/ros/melodic/include/geometry_msgs/Pose.h
  /opt/ros/melodic/include/geometry_msgs/PoseArray.h
  /opt/ros/melodic/include/geometry_msgs/PoseStamped.h
+ /opt/ros/melodic/include/geometry_msgs/PoseWithCovariance.h
+ /opt/ros/melodic/include/geometry_msgs/PoseWithCovarianceStamped.h
  /opt/ros/melodic/include/geometry_msgs/Quaternion.h
  /opt/ros/melodic/include/geometry_msgs/QuaternionStamped.h
  /opt/ros/melodic/include/geometry_msgs/Transform.h
@@ -69,6 +73,11 @@ CMakeFiles/main_node.dir/src/main.cpp.o
  /opt/ros/melodic/include/geometry_msgs/Vector3.h
  /opt/ros/melodic/include/geometry_msgs/Vector3Stamped.h
  /opt/ros/melodic/include/geometry_msgs/Wrench.h
+ /opt/ros/melodic/include/geometry_msgs/WrenchStamped.h
+ /opt/ros/melodic/include/kdl/frames.hpp
+ /opt/ros/melodic/include/kdl/frames.inl
+ /opt/ros/melodic/include/kdl/utilities/kdl-config.h
+ /opt/ros/melodic/include/kdl/utilities/utility.h
  /opt/ros/melodic/include/moveit/exceptions/exceptions.h
  /opt/ros/melodic/include/moveit/kinematics_base/kinematics_base.h
  /opt/ros/melodic/include/moveit/macros/class_forward.h
@@ -219,19 +228,19 @@ CMakeFiles/main_node.dir/src/main.cpp.o
  /opt/ros/melodic/include/tf/FrameGraphRequest.h
  /opt/ros/melodic/include/tf/FrameGraphResponse.h
  /opt/ros/melodic/include/tf/LinearMath/Matrix3x3.h
- /opt/ros/melodic/include/tf/LinearMath/MinMax.h
- /opt/ros/melodic/include/tf/LinearMath/QuadWord.h
  /opt/ros/melodic/include/tf/LinearMath/Quaternion.h
- /opt/ros/melodic/include/tf/LinearMath/Scalar.h
  /opt/ros/melodic/include/tf/LinearMath/Transform.h
- /opt/ros/melodic/include/tf/LinearMath/Vector3.h
  /opt/ros/melodic/include/tf/exceptions.h
  /opt/ros/melodic/include/tf/tf.h
  /opt/ros/melodic/include/tf/tfMessage.h
  /opt/ros/melodic/include/tf/time_cache.h
  /opt/ros/melodic/include/tf/transform_datatypes.h
  /opt/ros/melodic/include/tf/transform_listener.h
+ /opt/ros/melodic/include/tf2/LinearMath/MinMax.h
+ /opt/ros/melodic/include/tf2/LinearMath/QuadWord.h
  /opt/ros/melodic/include/tf2/LinearMath/Quaternion.h
+ /opt/ros/melodic/include/tf2/LinearMath/Scalar.h
+ /opt/ros/melodic/include/tf2/LinearMath/Transform.h
  /opt/ros/melodic/include/tf2/LinearMath/Vector3.h
  /opt/ros/melodic/include/tf2/buffer_core.h
  /opt/ros/melodic/include/tf2/convert.h
@@ -239,12 +248,14 @@ CMakeFiles/main_node.dir/src/main.cpp.o
  /opt/ros/melodic/include/tf2/impl/convert.h
  /opt/ros/melodic/include/tf2/transform_datatypes.h
  /opt/ros/melodic/include/tf2/transform_storage.h
+ /opt/ros/melodic/include/tf2_geometry_msgs/tf2_geometry_msgs.h
  /opt/ros/melodic/include/tf2_msgs/FrameGraph.h
  /opt/ros/melodic/include/tf2_msgs/FrameGraphRequest.h
  /opt/ros/melodic/include/tf2_msgs/FrameGraphResponse.h
  /opt/ros/melodic/include/tf2_msgs/TFMessage.h
  /opt/ros/melodic/include/tf2_ros/buffer.h
  /opt/ros/melodic/include/tf2_ros/buffer_interface.h
+ /opt/ros/melodic/include/tf2_ros/transform_broadcaster.h
  /opt/ros/melodic/include/tf2_ros/transform_listener.h
  /opt/ros/melodic/include/trajectory_msgs/JointTrajectory.h
  /opt/ros/melodic/include/trajectory_msgs/JointTrajectoryPoint.h

@@ -27,18 +27,20 @@ class AriacOrderManger;
 
 class AriacSensorManager {
 public:
-    AriacSensorManager();
+    AriacSensorManager(AriacOrderManager &);
     ~AriacSensorManager();
 
-    void set_pose(geometry_msgs::TransformStamped &transformStamped, const geometry_msgs::Pose pose);
+    void setPose(const geometry_msgs::Pose pose, geometry_msgs::TransformStamped &);
+    void setPose(const geometry_msgs::Pose pose, geometry_msgs::Pose &);
     void logicalCamera4Callback(const osrf_gear::LogicalCameraImage::ConstPtr &);
     void breakBeamCallback(const osrf_gear::Proximity::ConstPtr &);
     bool isObjectDetected();
+    void setTransform ();
 
 
 private:
     ros::NodeHandle sensor_nh_;
-    AriacOrderManager orderManager;
+    AriacOrderManager &orderManager;
 
     ros::Subscriber camera_4_subscriber_;
     ros::Subscriber breakbeam_subscriber;
@@ -46,6 +48,10 @@ private:
     geometry_msgs::TransformStamped transformStamped2;
     geometry_msgs::TransformStamped transformStamped3;
     tf2_ros::Buffer tfBuffer;
+    osrf_gear::Model*  tracking_part;
+    tf2_ros::TransformBroadcaster br_w_s;
+    tf2_ros::TransformBroadcaster br_s_c;
+
 
 
 

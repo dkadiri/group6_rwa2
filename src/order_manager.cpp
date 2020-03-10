@@ -27,7 +27,31 @@ void AriacOrderManager::OrderCallback(const osrf_gear::Order::ConstPtr& order_ms
     received_orders_.push_back(*order_msg);
 }
 
+void AriacOrderManager::setProductType(){
+    ROS_INFO_STREAM("reading order." << std::endl);
+
+    for (const auto &order:received_orders_) {
+        auto order_id = order.order_id;
+        auto shipments = order.shipments;
+        for (const auto &shipment: shipments) {
+            auto shipment_type = shipment.shipment_type;
+            auto products = shipment.products;
+
+            for (const auto &product: products) {
+                product_type_pose_.first = product.type;
+                product_type.push_back(product.type);
+
+            }
+        }
+    }
+    ROS_INFO_STREAM("reading order."<< product_type.at(0) << std::endl);
+
+
+}
+
 std::vector<std::string> AriacOrderManager::getProductType(){
+
+
     return product_type;
 }
 

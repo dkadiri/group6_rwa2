@@ -27,6 +27,7 @@ public:
     std::map<std::string, std::list<std::pair<std::string,geometry_msgs::Pose>>> GetOrder();
     bool PickAndPlace(std::pair<std::string,geometry_msgs::Pose>,int );
     std::vector<std::string> getProductType();
+    void setProductType();
     void SubmitAGV(int);
 
 private:
