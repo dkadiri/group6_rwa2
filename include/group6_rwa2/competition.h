@@ -10,20 +10,21 @@
 
 #include <ros/ros.h>
 
-#include <osrf_gear/LogicalCameraImage.h>
-#include <osrf_gear/Order.h>
-#include <osrf_gear/Proximity.h>
 #include <sensor_msgs/JointState.h>
 #include <sensor_msgs/LaserScan.h>
 #include <sensor_msgs/Range.h>
 #include <std_msgs/Float32.h>
 #include <std_msgs/String.h>
 #include <std_srvs/Trigger.h>
+#include <osrf_gear/LogicalCameraImage.h>
+#include <osrf_gear/Order.h>
+#include <osrf_gear/Proximity.h>
 #include <trajectory_msgs/JointTrajectory.h>
 
 //class AriacOrderManager;
 
 class Competition {
+
 private:
 	std::string competition_state_;
 	double current_score_;
@@ -36,7 +37,7 @@ private:
 	bool arm_2_has_been_zeroed_;
 	osrf_gear::Order order_;
 public:
-	explicit Competition(ros::NodeHandle & );
+	explicit Competition(ros::NodeHandle * );
 
 	/// Called when a new message is received.
 	void current_score_callback(const std_msgs::Float32::ConstPtr & );

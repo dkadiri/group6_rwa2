@@ -11,10 +11,10 @@
 
 
 //AriacOrderManager::AriacOrderManager(): arm1_{"arm1"}, arm2_{"arm2"}
-AriacOrderManager::AriacOrderManager(): arm1_{"arm1"}
+AriacOrderManager::AriacOrderManager(ros::NodeHandle * nh): arm1_{"arm1"}
 {
-    order_subscriber_ = order_manager_nh_.subscribe(
-            "/ariac/orders", 10,
+	order_manager_nh_ = nh;
+    order_subscriber_ = order_manager_nh_->subscribe("/ariac/orders", 10,
             &AriacOrderManager::OrderCallback, this);
 
 }
@@ -174,7 +174,7 @@ std::string AriacOrderManager::GetProductFrame(std::string product_type) {
 void AriacOrderManager::SubmitAGV(int num) {
     std::string s = std::to_string(num);
     ros::ServiceClient start_client =
-            order_manager_nh_.serviceClient<osrf_gear::AGVControl>("/ariac/agv"+s);
+            order_manager_nh_->serviceClient<osrf_gear::AGVControl>("/ariac/agv"+s);
     if (!start_client.exists()) {
         ROS_INFO("Waiting for the client to be ready...");
         start_client.waitForExistence();

@@ -12,15 +12,15 @@
 #include <std_msgs/String.h>
 #include <std_srvs/Trigger.h>
 #include <trajectory_msgs/JointTrajectory.h>
-#include "../include/group6_rwa2/competition.h"
+#include <../include/group6_rwa2/competition.h>
 
-Competition::Competition(ros::NodeHandle & node)
+Competition::Competition(ros::NodeHandle * node)
         : current_score_(0), arm_1_has_been_zeroed_(false), arm_2_has_been_zeroed_(false) {
     // %Tag(ADV_CMD)%
-    arm_1_joint_trajectory_publisher_ = node.advertise<trajectory_msgs::JointTrajectory>(
+    arm_1_joint_trajectory_publisher_ = node->advertise<trajectory_msgs::JointTrajectory>(
             "/ariac/arm1/arm/command", 10);
 
-    arm_2_joint_trajectory_publisher_ = node.advertise<trajectory_msgs::JointTrajectory>(
+    arm_2_joint_trajectory_publisher_ = node->advertise<trajectory_msgs::JointTrajectory>(
             "/ariac/arm2/arm/command", 10);
     // %EndTag(ADV_CMD)%
 }

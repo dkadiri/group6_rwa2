@@ -4,8 +4,8 @@
 #include <tf/tf.h>
 #include <iostream>
 #include "order_manager.h"
-#include "../include/group6_rwa2/competition.h"
-#include "../include/group6_rwa2/sensor.h"
+#include <../include/group6_rwa2/competition.h>
+#include <../include/group6_rwa2/sensor.h>
 
 
 void StartCompetition(ros::NodeHandle & node) {
@@ -54,9 +54,9 @@ int main(int argc, char **argv) {
     ROS_INFO("Starting main function");
     ros::init(argc, argv, "ariac_manager_node");
     ros::NodeHandle node;
-    AriacOrderManager manager;
-    Competition comp(node);
-    AriacSensorManager sense(manager);
+    AriacOrderManager manager(&node);
+    Competition comp(&node);
+    AriacSensorManager sense(&manager);
 
     ros::Subscriber current_score_subscriber = node.subscribe(
             "/ariac/current_score", 10,

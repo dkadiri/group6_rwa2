@@ -5,12 +5,12 @@
 #ifndef SRC_ROBOT_CONTROLLER_H
 #define SRC_ROBOT_CONTROLLER_H
 
-
+#include <ros/ros.h>
 #include <geometry_msgs/Pose.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
-#include <ros/ros.h>
+
 #include <stdarg.h>
 #include <tf/transform_listener.h>
 #include <iostream>
