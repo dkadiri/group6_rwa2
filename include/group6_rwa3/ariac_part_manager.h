@@ -1,8 +1,8 @@
 //
 // Created by zeid on 3/1/20.
 //
-#ifndef GROUP6_RWA2_ARIAC_PART_MANAGER
-#define GROUP6_RWA2_ARIAC_PART_MANAGER
+#ifndef GROUP6_RWA3_ARIAC_PART_MANAGER
+#define GROUP6_RWA3_ARIAC_PART_MANAGER
 #include <string>
 #include <geometry_msgs/Pose.h>
 
@@ -25,4 +25,4 @@ public:
 
 
 };
-#endif //GROUP6_RWA2_ARIAC_PART_MANAGER
+#endif //GROUP6_RWA3_ARIAC_PART_MANAGER

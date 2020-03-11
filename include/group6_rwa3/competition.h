@@ -2,8 +2,8 @@
 // Created by zeid on 2/28/20.
 //
 
-#ifndef GROUP6_RWA2_COMPETITION_H
-#define GROUP6_RWA2_COMPETITION_H
+#ifndef GROUP6_RWA3_COMPETITION_H
+#define GROUP6_RWA3_COMPETITION_H
 
 #include <algorithm>
 #include <vector>
@@ -56,4 +56,4 @@ public:
 };
 
 
-#endif //GROUP6_RWA2_COMPETITION_H
+#endif //GROUP6_RWA3_COMPETITION_H

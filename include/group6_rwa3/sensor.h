@@ -1,6 +1,6 @@
 
-#ifndef GROUP6_RWA2_SENSOR
-#define GROUP6_RWA2_SENSOR
+#ifndef GROUP6_RWA3_SENSOR
+#define GROUP6_RWA3_SENSOR
 #include <list>
 #include <map>
 #include <string>
@@ -18,8 +18,8 @@
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 #include <osrf_gear/LogicalCameraImage.h>
 #include <osrf_gear/Proximity.h>
-#include <../group6_rwa2/order_manager.h>
-#include <../group6_rwa2/ariac_part_manager.h>
+#include <../group6_rwa3/order_manager.h>
+#include <../group6_rwa3/ariac_part_manager.h>
 
 
 
@@ -61,4 +61,4 @@ public:
 
 };
 
-#endif //GROUP6_RWA2_SENSOR
+#endif //GROUP6_RWA3_SENSOR

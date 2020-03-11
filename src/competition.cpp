@@ -12,7 +12,7 @@
 #include <std_msgs/String.h>
 #include <std_srvs/Trigger.h>
 #include <trajectory_msgs/JointTrajectory.h>
-#include "../include/group6_rwa2/competition.h"
+#include "../include/group6_rwa3/competition.h"
 
 Competition::Competition(ros::NodeHandle * node)
         : current_score_(0), arm_1_has_been_zeroed_(false), arm_2_has_been_zeroed_(false) {

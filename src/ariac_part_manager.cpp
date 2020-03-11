@@ -2,7 +2,7 @@
 // Created by zeid on 3/1/20.
 //
 
-#include "../include/group6_rwa2/ariac_part_manager.h"
+#include "../include/group6_rwa3/ariac_part_manager.h"
 
 AriacPartManager::AriacPartManager():part_type_{}, part_frame_{}{};
 AriacPartManager::~AriacPartManager(){};

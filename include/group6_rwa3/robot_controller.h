@@ -2,8 +2,8 @@
 // Created by zeid on 2/27/20.
 //
 
-#ifndef SRC_ROBOT_CONTROLLER_H
-#define SRC_ROBOT_CONTROLLER_H
+#ifndef GROUP6_RWA3_ROBOT_CONTROLLER_H
+#define GROUP6_RWA3_ROBOT_CONTROLLER_H
 
 #include <ros/ros.h>
 #include <geometry_msgs/Pose.h>
@@ -69,4 +69,4 @@ public:
 
 
 };
-#endif //SRC_ROBOT_CONTROLLER_H
+#endif //GROUP6_RWA3_ROBOT_CONTROLLER_H

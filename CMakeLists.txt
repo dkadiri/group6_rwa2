@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(group6_rwa2)
+project(group6_rwa3)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
  add_compile_options(-std=c++14)
@@ -33,8 +33,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS include/group6_rwa2
-#  LIBRARIES group6_rwa2
+  INCLUDE_DIRS include/group6_rwa3
+#  LIBRARIES group6_rwa3
   CATKIN_DEPENDS geometry_msgs moveit_ros_planning_interface osrf_gear roscpp sensor_msgs std_msgs std_srvs trajectory_msgs
 #  DEPENDS system_lib
 )
@@ -45,7 +45,7 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(include/group6_rwa2 ${catkin_INCLUDE_DIRS} )
+include_directories(include/group6_rwa3 ${catkin_INCLUDE_DIRS} )
 
 
 ## Declare a C++ executable

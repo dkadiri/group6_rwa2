@@ -1,4 +1,6 @@
-#pragma once
+
+#ifndef GROUP6_RWA3_ORDER_MANAGER
+#define GROUP6_RWA3_ORDER_MANAGER
 
 #include <list>
 #include <map>
@@ -13,7 +15,7 @@
 #include <osrf_gear/Order.h>
 
 
-#include <../group6_rwa2/robot_controller.h>
+#include <../group6_rwa3/robot_controller.h>
 
 // class AriacSensorManager;
 //class RobotController;
@@ -47,4 +49,5 @@ public:
 	void SubmitAGV(int);
 	ros::NodeHandle* getnode();
 };
+#endif //GROUP6_RWA3_ORDER_MANAGER
 
