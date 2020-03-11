@@ -37,7 +37,7 @@ private:
 	bool arm_2_has_been_zeroed_;
 	osrf_gear::Order order_;
 public:
-	explicit Competition(ros::NodeHandle * );
+	explicit Competition(ros::NodeHandle);
 
 	/// Called when a new message is received.
 	void current_score_callback(const std_msgs::Float32::ConstPtr & );
