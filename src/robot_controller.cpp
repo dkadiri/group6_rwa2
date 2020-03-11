@@ -71,6 +71,11 @@ RobotController::RobotController(std::string arm_id) : robot_controller_nh_("/ar
 	//	end_position_[0] = 2.2;
 	//    end_position_[1] = 4.5;
 	//    end_position_[2] = 1.2;
+    end_pose_.position.x = 0.0;
+    end_pose_.position.y = 0.0;
+    end_pose_.position.z = 0.0;
+    end_pose_.orientation = fixed_orientation_;
+
 
 
 	robot_tf_listener_.waitForTransform("world", "arm1_ee_link", ros::Time(0),
@@ -349,16 +354,21 @@ bool RobotController::isPartAttached(){
 }
 
 void RobotController::GoToEnd() {
-	robot_move_group_.setJointValueTarget(end_position_);
-	// this->execute();
-	ros::AsyncSpinner spinner(4);
-	spinner.start();
-	if (this->Planner()) {
-		robot_move_group_.move();
-		ros::Duration(1.5).sleep();
-	}
-
-	ros::Duration(2.0).sleep();
+//	robot_move_group_.setJointValueTarget(end_position_);
+//	// this->execute();
+//	ros::AsyncSpinner spinner(4);
+//	spinner.start();
+//	if (this->Planner()) {
+//		robot_move_group_.move();
+//		ros::Duration(1.5).sleep();
+//	}
+//
+//	ros::Duration(2.0).sleep();
+	end_pose_.position.z += 1;
+	GoToTarget(end_pose_);
+	end_pose_.position.z += -0.9;
+	GoToTarget(end_pose_);
+	GripperToggle(false);
 }
 
 geometry_msgs::Pose RobotController::getHomeCartPose(){
@@ -453,3 +463,4 @@ geometry_msgs::Pose RobotController::getHomeCartPose(){
 //	arm_base_part_pose.orientation.w = fixed_orientation_.w;
 // return arm_base_part_pose;
 //}
+

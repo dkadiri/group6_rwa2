@@ -48,6 +48,7 @@ private:
 	geometry_msgs::Quaternion fixed_orientation_;
 	geometry_msgs::Pose agv_position_;
 	std::vector<double> end_position_;
+	geometry_msgs::Pose end_pose_;
 	double offset_;
 	double roll_def_,pitch_def_,yaw_def_;
 	tf::Quaternion q;
