@@ -12,6 +12,7 @@ AriacSensorManager::AriacSensorManager(AriacOrderManager* obj): orderManager(obj
 	//	breakbeam_subscriber = sensor_nh_->subscribe("/ariac/break_beam_1", 10,	&AriacSensorManager::breakBeamCallback,this);
 	//	tracking_part = new osrf_gear::Model();
 	tracking_part= nullptr;
+	transform = sensor_nh.advertise<geometry_msgs::pose>("/ariac/logical_sensor_4/tracking_object", 10);
 }
 
 AriacSensorManager::~AriacSensorManager() {}
@@ -50,6 +51,17 @@ void AriacSensorManager::setTransform () {
 		ROS_WARN("%s",ex.what());
 		ros::Duration(0.01).sleep();
 	}
+	geometry_msgs::pose msg;
+
+	msg.position.x = transformStamped3.position.x;
+	msg.position.y = transformStamped3.position.y;
+	msg.position.z = transformStamped3.position.z;
+	msg.orientation.x = transformStamped3.orientation.x;
+	msg.orientation.y = transformStamped3.orientation.y;
+	msg.orientation.z = transformStamped3.orientation.z;
+	msg.orientation.w = transformStamped3.orientation.w;
+
+	AriacSensorManager::transform.publish(msg);
 
 	ROS_INFO("%s in world frame: [%f,%f,%f] [%f,%f,%f,%f]",type.c_str(),transformStamped3.transform.translation.x,
 			transformStamped3.transform.translation.y,

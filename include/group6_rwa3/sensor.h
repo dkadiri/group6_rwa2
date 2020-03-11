@@ -48,7 +48,7 @@ private:
 	bool object_detected = false;
 	std::map<std::string, std::vector<geometry_msgs::Pose>> part_list_;
 	std::map<std::string, std::vector<std::string>> product_frame_list_;
-
+	ros::Publisher transform;
 public:
 	AriacSensorManager(AriacOrderManager *);
 	~AriacSensorManager();
