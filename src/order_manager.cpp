@@ -204,6 +204,8 @@ ros::NodeHandle* AriacOrderManager::getnode() {
 
 void AriacOrderManager::pathplanningCallback(const geometry_msgs::Pose& msg) {
 	ROS_INFO("robot_controller_pathPplanning");
-//	GoToTarget(msg);
+
+	arm1_.GoToTarget(msg);
+
 
 }
