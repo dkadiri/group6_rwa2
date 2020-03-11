@@ -56,25 +56,14 @@ RobotController::RobotController(std::string arm_id) : robot_controller_nh_("/ar
 	tf::Matrix3x3(q).getRPY(roll_def_,pitch_def_,yaw_def_);
 
 
-	//end_position_ = {0.0, 3.1, -1.1, 1.9, 3.9, 4.7, 0};
-        tf2::Quaternion myQuaternion;
-        myQuaternion.setRPY( 0.0006, -0.0010, 0.7851 );
-        geometry_msgs::Pose pose;
-        pose.orientation.x = myQuaternion.x();
-    pose.orientation.y = myQuaternion.y();
-    pose.orientation.z = myQuaternion.z();
-    pose.orientation.w = myQuaternion.w();
-
-    pose.position.x = -0.2000;
-    pose.position.y = 0.5830;
-    pose.position.z = 0.7241;
+	end_position_ = {1.5, 1.5, -0.9, 1.9, 3.1, -1.59, 0.126};
 	//	end_position_[0] = 2.2;
 	//    end_position_[1] = 4.5;
 	//    end_position_[2] = 1.2;
-    end_pose_.position.x = 0.0;
-    end_pose_.position.y = 0.0;
-    end_pose_.position.z = 0.0;
-    end_pose_.orientation = fixed_orientation_;
+//    end_pose_.position.x = 0.0;
+//    end_pose_.position.y = 0.0;
+//    end_pose_.position.z = 0.0;
+//    end_pose_.orientation = fixed_orientation_;
 
 
 
@@ -204,6 +193,19 @@ void RobotController::SendRobotHome() {
 	}
 
 	ros::Duration(2.0).sleep();
+}
+void RobotController::GoToEnd() {
+	robot_move_group_.setJointValueTarget(end_position_);
+	// this->execute();
+	ros::AsyncSpinner spinner(4);
+	spinner.start();
+	if (this->Planner()) {
+		robot_move_group_.move();
+		ros::Duration(1.5).sleep();
+	}
+	GripperToggle(false);
+	ros::Duration(2.0).sleep();
+
 }
 
 void RobotController::GripperToggle(const bool& state) {
@@ -353,23 +355,7 @@ bool RobotController::isPartAttached(){
 	return gripper_state_;
 }
 
-void RobotController::GoToEnd() {
-//	robot_move_group_.setJointValueTarget(end_position_);
-//	// this->execute();
-//	ros::AsyncSpinner spinner(4);
-//	spinner.start();
-//	if (this->Planner()) {
-//		robot_move_group_.move();
-//		ros::Duration(1.5).sleep();
-//	}
-//
-//	ros::Duration(2.0).sleep();
-	end_pose_.position.z += 1;
-	GoToTarget(end_pose_);
-	end_pose_.position.z += -0.9;
-	GoToTarget(end_pose_);
-	GripperToggle(false);
-}
+
 
 geometry_msgs::Pose RobotController::getHomeCartPose(){
 	return home_cart_pose_;
