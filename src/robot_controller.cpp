@@ -1,6 +1,8 @@
 //
 // Created by zeid on 2/27/20.
 //
+#include <tf/transform_listener.h>
+#include <tf2_ros/transform_broadcaster.h>
 #include "../include/group6_rwa3/robot_controller.h"
 
 /**
@@ -24,9 +26,9 @@ RobotController::RobotController(std::string arm_id) : robot_controller_nh_("/ar
 
 
 	//--These are joint positions used for the home position
-	home_joint_pose_ = {0.0, 3.1, -1.1, 1.9, 3.9, 4.7, 0};
+	//	home_joint_pose_ = {0.0, 3.1, -1.1, 1.9, 3.9, 4.7, 0};
 	home_joint_pose_ = {-0.25, 0.0,  -0.66,  1.6, 3.8, -1.59, 0.126};
-     //home_joint_pose_ = {4.78, 0.09, -2.39, 3.14, -0.88, 1.51, 0};
+	//home_joint_pose_ = {4.78, 0.09, -2.39, 3.14, -0.88, 1.51, 0};
 	//-- offset used for picking up parts
 	//-- For the pulley_part, the offset is different since the pulley is thicker
 	offset_ = 0.025;
@@ -53,8 +55,8 @@ RobotController::RobotController(std::string arm_id) : robot_controller_nh_("/ar
 	tf::Matrix3x3(q).getRPY(roll_def_,pitch_def_,yaw_def_);
 
 
-	end_position_ = home_joint_pose_;
-	end_position_[0] = 2.2;
+	end_position_ = {0.0, 3.1, -1.1, 1.9, 3.9, 4.7, 0};
+	//	end_position_[0] = 2.2;
 	//    end_position_[1] = 4.5;
 	//    end_position_[2] = 1.2;
 
@@ -123,8 +125,9 @@ void RobotController::GoToTarget(const geometry_msgs::Pose& pose) {
 	robot_move_group_.setPoseTarget(target_pose_);
 	spinner.start();
 	if (this->Planner()) {
+		ROS_INFO_STREAM("Point success");
 		robot_move_group_.move();
-		ros::Duration(1.5).sleep();
+		ros::Duration(0.02).sleep();
 	}
 	ROS_INFO_STREAM("Point reached...");
 }
@@ -316,5 +319,84 @@ bool RobotController::PickPart(geometry_msgs::Pose& part_pose) {
 	return gripper_state_;
 }
 
+bool RobotController::isPartAttached(){
+	return gripper_status_.attached;
+}
+
+void RobotController::GoToEnd() {
+	robot_move_group_.setJointValueTarget(end_position_);
+	// this->execute();
+	ros::AsyncSpinner spinner(4);
+	spinner.start();
+	if (this->Planner()) {
+		robot_move_group_.move();
+		ros::Duration(1.5).sleep();
+	}
+
+	ros::Duration(2.0).sleep();
+}
+
+geometry_msgs::Pose RobotController::getHomeCartPose(){
+	return home_cart_pose_;
+}
+
+//geometry_msgs::Pose RobotController::convertToArmBaseFrame( const geometry_msgs::PoseStamped& pose_msg) {
+//	geometry_msgs::PoseStamped arm_base_part_pose_stamped;
+////	geometry_msgs::Pose arm_base_part_pose;
+//	 try {
+//	robot_tf_listener_.transformPose ("/arm1_linear_arm_actuator", pose_msg, arm_base_part_pose_stamped);
+//	 } catch(tf::TransformException& ex) {
+//         ROS_ERROR_STREAM("Unable to transform object from frame "  << ex.what());
+//     }
+//
+//	arm_base_part_pose_stamped.pose.orientation.x = fixed_orientation_.x;
+//	arm_base_part_pose_stamped.pose.orientation.y = fixed_orientation_.y;
+//	arm_base_part_pose_stamped.pose.orientation.z = fixed_orientation_.z;
+//	arm_base_part_pose_stamped.pose.orientation.w = fixed_orientation_.w;
+//	return arm_base_part_pose_stamped.pose;
+//
+//}
 
 
+geometry_msgs::Pose RobotController::convertToArmBaseFrame( const geometry_msgs::PoseStamped& pose_msg) {
+	//tf2_ros::TransformBroadcaster br_w_arm;
+	geometry_msgs::Pose arm_base_part_pose;
+	tf2_ros::TransformBroadcaster br_arm_part;
+	tf2_ros::Buffer tfBuffer;
+
+	tf2_ros::TransformListener tfListener(tfBuffer);
+	geometry_msgs::TransformStamped ts_w_part;
+	geometry_msgs::TransformStamped ts_arm_part;
+	ts_w_part.header.stamp = pose_msg.header.stamp;
+	ts_w_part.header.frame_id = "world";
+	ts_w_part.child_frame_id = "tracking_part";
+	ts_w_part.transform.translation.x = pose_msg.pose.position.x;
+	ts_w_part.transform.translation.y = pose_msg.pose.position.y;
+	ts_w_part.transform.translation.z = pose_msg.pose.position.z;
+	ts_w_part.transform.rotation.x = pose_msg.pose.orientation.x;
+	ts_w_part.transform.rotation.y = pose_msg.pose.orientation.y;
+	ts_w_part.transform.rotation.z = pose_msg.pose.orientation.z;
+	ts_w_part.transform.rotation.w = pose_msg.pose.orientation.w;
+	br_arm_part.sendTransform(ts_w_part);
+	ros::Duration(0.01).sleep();
+
+//	tfBuffer.waitForTransform("arm1_linear_arm_actuator", "tracking_part",
+//				ros::Time(0), ros::Duration(10));
+	try{
+		ts_arm_part = tfBuffer.lookupTransform("arm1_linear_arm_actuator", "tracking_part",
+				ros::Time(0));
+	}
+	catch (tf2::TransformException &ex) {
+		ROS_WARN("exception");
+		ROS_WARN("%s",ex.what());
+		ros::Duration(0.01).sleep();
+	}
+	arm_base_part_pose.position.x = ts_arm_part.transform.translation.x;
+	arm_base_part_pose.position.y = ts_arm_part.transform.translation.y;
+	arm_base_part_pose.position.z = ts_arm_part.transform.translation.z;
+	arm_base_part_pose.orientation.x = fixed_orientation_.x;
+	arm_base_part_pose.orientation.y = fixed_orientation_.y;
+	arm_base_part_pose.orientation.z = fixed_orientation_.z;
+	arm_base_part_pose.orientation.w = fixed_orientation_.w;
+ return arm_base_part_pose;
+}

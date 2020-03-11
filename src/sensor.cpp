@@ -5,14 +5,14 @@
 
 AriacSensorManager::AriacSensorManager(AriacOrderManager* obj): orderManager(obj)
 {
-//	sensor_nh_ = orderManager->getnode();
+	//	sensor_nh_ = orderManager->getnode();
 	ROS_INFO_STREAM(">>>>> Subscribing to logical sensors");
 
 	camera_4_subscriber_ = sensor_nh_.subscribe("/ariac/logical_camera_4", 10 , &AriacSensorManager::logicalCamera4Callback, this);
 	//	breakbeam_subscriber = sensor_nh_->subscribe("/ariac/break_beam_1", 10,	&AriacSensorManager::breakBeamCallback,this);
 	//	tracking_part = new osrf_gear::Model();
 	tracking_part= nullptr;
-	transform_publisher = sensor_nh_.advertise<geometry_msgs::Pose>("/ariac/logical_sensor_4/tracking_object", 10);
+	transform_publisher = sensor_nh_.advertise<geometry_msgs::PoseStamped>("/ariac/logical_sensor_4/tracking_object", 10);
 }
 
 AriacSensorManager::~AriacSensorManager() {}
@@ -51,15 +51,15 @@ void AriacSensorManager::setTransform () {
 		ROS_WARN("%s",ex.what());
 		ros::Duration(0.01).sleep();
 	}
-	geometry_msgs::Pose msg;
-
-	msg.position.x = transformStamped3.transform.translation.x;
-	msg.position.y = transformStamped3.transform.translation.y;
-	msg.position.z = transformStamped3.transform.translation.z;
-	msg.orientation.x = transformStamped3.transform.rotation.x;
-	msg.orientation.y = transformStamped3.transform.rotation.y;
-	msg.orientation.z = transformStamped3.transform.rotation.z;
-	msg.orientation.w = transformStamped3.transform.rotation.w;
+	geometry_msgs::PoseStamped msg;
+	msg.header = transformStamped3.header;
+	msg.pose.position.x = transformStamped3.transform.translation.x;
+	msg.pose.position.y = transformStamped3.transform.translation.y;
+	msg.pose.position.z = transformStamped3.transform.translation.z;
+	msg.pose.orientation.x = transformStamped3.transform.rotation.x;
+	msg.pose.orientation.y = transformStamped3.transform.rotation.y;
+	msg.pose.orientation.z = transformStamped3.transform.rotation.z;
+	msg.pose.orientation.w = transformStamped3.transform.rotation.w;
 
 	transform_publisher.publish(msg);
 
@@ -105,7 +105,7 @@ void AriacSensorManager::logicalCamera4Callback(
 				tracking_part->type = it->type;
 				tracking_part->pose = it->pose;
 				setTransform();
-//				ROS_INFO_STREAM("tracking part id: " << tracking_part->type << std::endl);
+				//				ROS_INFO_STREAM("tracking part id: " << tracking_part->type << std::endl);
 			}
 
 		}
@@ -113,8 +113,8 @@ void AriacSensorManager::logicalCamera4Callback(
 		if (it->type.compare(tracking_part->type) == 0 && it-> pose.position.z > tracking_part->pose.position.z ) {
 			setPose(it->pose, tracking_part->pose);
 			setTransform();
-//			ROS_INFO_STREAM("Tracking type: " << tracking_part->type << std::endl);
-//			ROS_INFO_STREAM("Tracking pose: " << tracking_part->pose << std::endl);
+			//			ROS_INFO_STREAM("Tracking type: " << tracking_part->type << std::endl);
+			//			ROS_INFO_STREAM("Tracking pose: " << tracking_part->pose << std::endl);
 		}
 	}
 }

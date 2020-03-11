@@ -73,13 +73,13 @@ int main(int argc, char **argv) {
 
 
     StartCompetition(node);
-    ros::Rate(20.0).sleep();
+    ros::Rate(10.0).sleep();
 //    ros::Duration(2.0).sleep();
     //manager.SetScannedProducts();
 //    manager.ExecuteOrder();
 
     ros::spin();  // This executes callbacks on new data until ctrl-c.
-
+//    ros::waitForShutdown();
 
     //manager.ExecuteOrder();
     //EndCompetition(node);

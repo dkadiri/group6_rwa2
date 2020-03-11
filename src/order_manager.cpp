@@ -2,12 +2,12 @@
 // Created by zeid on 2/27/20.
 //
 
-#include "../include/group6_rwa3/order_manager.h"
+
 #include <osrf_gear/AGVControl.h>
 #include <string>
 #include <ros/ros.h>
 #include <std_srvs/Trigger.h>
-
+#include "../include/group6_rwa3/order_manager.h"
 
 
 //AriacOrderManager::AriacOrderManager(): arm1_{"arm1"}, arm2_{"arm2"}
@@ -15,9 +15,9 @@ AriacOrderManager::AriacOrderManager(ros::NodeHandle * nh): arm1_{"arm1"}
 {
 	order_manager_nh_ = nh;
 	wayPoint_subscriber = order_manager_nh_->subscribe(
-					"/ariac/logical_sensor_4/tracking_object", 10, &AriacOrderManager::pathplanningCallback, this);
-    order_subscriber_ = order_manager_nh_->subscribe("/ariac/orders", 10,
-            &AriacOrderManager::OrderCallback, this);
+			"/ariac/logical_sensor_4/tracking_object", 10, &AriacOrderManager::pathplanningCallback, this);
+	order_subscriber_ = order_manager_nh_->subscribe("/ariac/orders", 10,
+			&AriacOrderManager::OrderCallback, this);
 
 }
 
@@ -25,30 +25,30 @@ AriacOrderManager::~AriacOrderManager(){}
 
 
 void AriacOrderManager::OrderCallback(const osrf_gear::Order::ConstPtr& order_msg) {
-    ROS_WARN(">>>>> OrderCallback");
-    received_orders_.push_back(*order_msg);
-    ROS_INFO_STREAM("no of orders "<< received_orders_.size() << std::endl);
-    setProductType();
+	ROS_WARN(">>>>> OrderCallback");
+	received_orders_.push_back(*order_msg);
+	ROS_INFO_STREAM("no of orders "<< received_orders_.size() << std::endl);
+	setProductType();
 }
 
 void AriacOrderManager::setProductType(){
-    ROS_INFO_STREAM("reading order." << std::endl);
+	ROS_INFO_STREAM("reading order." << std::endl);
 
-    for (const auto &order:received_orders_) {
-        auto order_id = order.order_id;
-        auto shipments = order.shipments;
-        for (const auto &shipment: shipments) {
-            auto shipment_type = shipment.shipment_type;
-            auto products = shipment.products;
+	for (const auto &order:received_orders_) {
+		auto order_id = order.order_id;
+		auto shipments = order.shipments;
+		for (const auto &shipment: shipments) {
+			auto shipment_type = shipment.shipment_type;
+			auto products = shipment.products;
 
-            for (const auto &product: products) {
-                product_type_pose_.first = product.type;
-                product_type.push_back(product.type);
+			for (const auto &product: products) {
+				product_type_pose_.first = product.type;
+				product_type.push_back(product.type);
 
-            }
-        }
-    }
-    ROS_INFO_STREAM("no of products "<< product_type.size() << std::endl);
+			}
+		}
+	}
+	ROS_INFO_STREAM("no of products "<< product_type.size() << std::endl);
 
 
 }
@@ -56,7 +56,7 @@ void AriacOrderManager::setProductType(){
 std::vector<std::string> AriacOrderManager::getProductType(){
 
 
-    return product_type;
+	return product_type;
 }
 
 
@@ -66,16 +66,16 @@ std::vector<std::string> AriacOrderManager::getProductType(){
  * @return
  */
 std::string AriacOrderManager::GetProductFrame(std::string product_type) {
-    //--Grab the last one from the list then remove it
-    if (!product_frame_list_.empty()) {
-        std::string frame = product_frame_list_[product_type].back();
-        ROS_INFO_STREAM("Frame >>>> " << frame);
-        product_frame_list_[product_type].pop_back();
-        return frame;
-    } else {
-        ROS_ERROR_STREAM("No product frame found for " << product_type);
-        ros::shutdown();
-    }
+	//--Grab the last one from the list then remove it
+	if (!product_frame_list_.empty()) {
+		std::string frame = product_frame_list_[product_type].back();
+		ROS_INFO_STREAM("Frame >>>> " << frame);
+		product_frame_list_[product_type].pop_back();
+		return frame;
+	} else {
+		ROS_ERROR_STREAM("No product frame found for " << product_type);
+		ros::shutdown();
+	}
 }
 
 
@@ -178,23 +178,23 @@ std::string AriacOrderManager::GetProductFrame(std::string product_type) {
 
 
 void AriacOrderManager::SubmitAGV(int num) {
-    std::string s = std::to_string(num);
-    ros::ServiceClient start_client =
-            order_manager_nh_->serviceClient<osrf_gear::AGVControl>("/ariac/agv"+s);
-    if (!start_client.exists()) {
-        ROS_INFO("Waiting for the client to be ready...");
-        start_client.waitForExistence();
-        ROS_INFO("Service started.");
-    }
+	std::string s = std::to_string(num);
+	ros::ServiceClient start_client =
+			order_manager_nh_->serviceClient<osrf_gear::AGVControl>("/ariac/agv"+s);
+	if (!start_client.exists()) {
+		ROS_INFO("Waiting for the client to be ready...");
+		start_client.waitForExistence();
+		ROS_INFO("Service started.");
+	}
 
-    osrf_gear::AGVControl srv;
-    // srv.request.kit_type = "order_0_kit_0";
-    start_client.call(srv);
+	osrf_gear::AGVControl srv;
+	// srv.request.kit_type = "order_0_kit_0";
+	start_client.call(srv);
 
-    if (!srv.response.success) {
-        ROS_ERROR_STREAM("Service failed!");
-    } else
-        ROS_INFO("Service succeeded.");
+	if (!srv.response.success) {
+		ROS_ERROR_STREAM("Service failed!");
+	} else
+		ROS_INFO("Service succeeded.");
 }
 
 
@@ -202,10 +202,26 @@ ros::NodeHandle* AriacOrderManager::getnode() {
 	return order_manager_nh_;
 }
 
-void AriacOrderManager::pathplanningCallback(const geometry_msgs::Pose& msg) {
-	ROS_INFO("robot_controller_pathPplanning");
+void AriacOrderManager::pathplanningCallback(const geometry_msgs::PoseStamped& msg) {
+	ROS_INFO("robot_controller_pathPlanning");
+	double threshold_z = 1;
+	double threshold_y = 1;
 
-	arm1_.GoToTarget(msg);
-
+	ROS_INFO_STREAM("isPartAttached status" << arm1_.isPartAttached());
+	if(!arm1_.isPartAttached()) {
+		ROS_INFO("part not attached");
+		geometry_msgs::Pose arm_base_part_pose = arm1_.convertToArmBaseFrame(msg);
+		ROS_INFO_STREAM(arm_base_part_pose.position.x<< arm_base_part_pose.position.y<< arm_base_part_pose.position.z);
+//		arm1_.GoToTarget(arm_base_part_pose);
+		ROS_INFO("going toward part");
+		if(arm1_.getHomeCartPose().orientation.z- msg.pose.orientation.z < threshold_z &&
+				arm1_.getHomeCartPose().orientation.y- msg.pose.orientation.y < threshold_y) {
+			arm1_.GripperToggle(true);
+		} else {
+			arm1_.GripperToggle(false);
+		}
+	} else {
+		arm1_.GoToEnd();
+	}
 
 }

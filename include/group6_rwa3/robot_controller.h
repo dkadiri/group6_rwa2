@@ -67,7 +67,10 @@ public:
 	void GripperCallback(const osrf_gear::VacuumGripperState::ConstPtr& );
 	void GripperStateCheck(geometry_msgs::Pose );
 	bool PickPart(geometry_msgs::Pose& );
-
+	bool isPartAttached();
+	void GoToEnd();
+	geometry_msgs::Pose getHomeCartPose();
+	geometry_msgs::Pose convertToArmBaseFrame( const  geometry_msgs::PoseStamped& );
 
 
 };
