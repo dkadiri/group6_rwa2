@@ -5,14 +5,14 @@
 
 AriacSensorManager::AriacSensorManager(AriacOrderManager* obj): orderManager(obj)
 {
-	sensor_nh_ = orderManager->getnode();
+//	sensor_nh_ = orderManager->getnode();
 	ROS_INFO_STREAM(">>>>> Subscribing to logical sensors");
 
-	camera_4_subscriber_ = sensor_nh_->subscribe("/ariac/logical_camera_4", 10 , &AriacSensorManager::logicalCamera4Callback, this);
+	camera_4_subscriber_ = sensor_nh_.subscribe("/ariac/logical_camera_4", 10 , &AriacSensorManager::logicalCamera4Callback, this);
 	//	breakbeam_subscriber = sensor_nh_->subscribe("/ariac/break_beam_1", 10,	&AriacSensorManager::breakBeamCallback,this);
 	//	tracking_part = new osrf_gear::Model();
 	tracking_part= nullptr;
-	transform = sensor_nh.advertise<geometry_msgs::pose>("/ariac/logical_sensor_4/tracking_object", 10);
+	transform_publisher = sensor_nh_.advertise<geometry_msgs::Pose>("/ariac/logical_sensor_4/tracking_object", 10);
 }
 
 AriacSensorManager::~AriacSensorManager() {}
@@ -51,17 +51,17 @@ void AriacSensorManager::setTransform () {
 		ROS_WARN("%s",ex.what());
 		ros::Duration(0.01).sleep();
 	}
-	geometry_msgs::pose msg;
+	geometry_msgs::Pose msg;
 
-	msg.position.x = transformStamped3.position.x;
-	msg.position.y = transformStamped3.position.y;
-	msg.position.z = transformStamped3.position.z;
-	msg.orientation.x = transformStamped3.orientation.x;
-	msg.orientation.y = transformStamped3.orientation.y;
-	msg.orientation.z = transformStamped3.orientation.z;
-	msg.orientation.w = transformStamped3.orientation.w;
+	msg.position.x = transformStamped3.transform.translation.x;
+	msg.position.y = transformStamped3.transform.translation.y;
+	msg.position.z = transformStamped3.transform.translation.z;
+	msg.orientation.x = transformStamped3.transform.rotation.x;
+	msg.orientation.y = transformStamped3.transform.rotation.y;
+	msg.orientation.z = transformStamped3.transform.rotation.z;
+	msg.orientation.w = transformStamped3.transform.rotation.w;
 
-	AriacSensorManager::transform.publish(msg);
+	transform_publisher.publish(msg);
 
 	ROS_INFO("%s in world frame: [%f,%f,%f] [%f,%f,%f,%f]",type.c_str(),transformStamped3.transform.translation.x,
 			transformStamped3.transform.translation.y,
