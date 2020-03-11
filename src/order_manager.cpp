@@ -215,9 +215,9 @@ void AriacOrderManager::pathplanningCallback(const geometry_msgs::TransformStamp
 	arm_base_part_pose.orientation.y= msg.transform.rotation.y;
 	arm_base_part_pose.orientation.z= msg.transform.rotation.z;
 	arm_base_part_pose.orientation.w = msg.transform.rotation.w;
-	if(count ==0) {
+//	if(count ==0) {
 //	ROS_INFO_STREAM("isPartAttached status" << arm1_.isPartAttached());
-//	if(!arm1_.isPartAttached()) {
+	if(!arm1_.isPartAttached()) {
 //		ROS_INFO("part not attached");
 //		ROS_INFO_STREAM(msg.transform.translation.x<<","<< msg.transform.translation.y<<","<< msg.transform.translation.z);
 		arm1_.GoToTarget(arm_base_part_pose);

@@ -114,35 +114,35 @@ void RobotController::Execute() {
 	spinner.start();
 	if (this->Planner()) {
 		robot_move_group_.move();
-		ros::Duration(1.5).sleep();
+		ros::Duration(0.2).sleep();
 	}
 }
 
 void RobotController::GoToTarget(const geometry_msgs::Pose& pose) {
 	target_pose_.orientation = fixed_orientation_;
 	target_pose_.position = pose.position;
-//	ros::AsyncSpinner spinner(4);
+	ros::AsyncSpinner spinner(4);
 	robot_move_group_.setPoseTarget(target_pose_);
-//	spinner.start();
+	spinner.start();
 	if (this->Planner()) {
 		ROS_INFO_STREAM("Point success");
 		robot_move_group_.move();
-		ros::Duration(1.5).sleep();
+		ros::Duration(0.2).sleep();
 	}
 	ROS_INFO_STREAM("Point reached...");
 }
 
-//void RobotController::GotoTarget(const geometry_msgs::Pose& pose) {
-//	target_pose_.orientation = fixed_orientation_;
-//	target_pose_.position = pose.position;
-////	ros::AsyncSpinner spinner(4);
-//	robot_move_group_.setPoseTarget(target_pose_);
-////	spinner.start();
-//		ROS_INFO_STREAM("Point success");
-//		robot_move_group_.move();
-//		ros::Duration(1.5).sleep();
-//	ROS_INFO_STREAM("Point reached...");
-//}
+void RobotController::GotoTarget(const geometry_msgs::Pose& pose) {
+	target_pose_.orientation = fixed_orientation_;
+	target_pose_.position = pose.position;
+//	ros::AsyncSpinner spinner(4);
+	robot_move_group_.setPoseTarget(target_pose_);
+//	spinner.start();
+		ROS_INFO_STREAM("Point success");
+		robot_move_group_.move();
+		ros::Duration(1.5).sleep();
+	ROS_INFO_STREAM("Point reached...");
+}
 
 void RobotController::GoToTarget(
 		std::initializer_list<geometry_msgs::Pose> list) {
