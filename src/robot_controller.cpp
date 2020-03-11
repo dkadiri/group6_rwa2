@@ -27,7 +27,8 @@ RobotController::RobotController(std::string arm_id) : robot_controller_nh_("/ar
 
 	//--These are joint positions used for the home position
 	//	home_joint_pose_ = {0.0, 3.1, -1.1, 1.9, 3.9, 4.7, 0};
-	home_joint_pose_ = {-0.25, 0.0,  -0.7,  1.6, 3.9, -1.59, 0.126};
+//	home_joint_pose_ = {-0.25, 0.0,  -0.7,  1.6, 3.9, -1.59, 0.126};
+	home_joint_pose_ =  {0.1, 3.14,  -2.7,-1.0, 2.1, -1.59, 0.126};
 	//home_joint_pose_ = {4.78, 0.09, -2.39, 3.14, -0.88, 1.51, 0};
 	//-- offset used for picking up parts
 	//-- For the pulley_part, the offset is different since the pulley is thicker
@@ -114,7 +115,7 @@ void RobotController::Execute() {
 	spinner.start();
 	if (this->Planner()) {
 		robot_move_group_.move();
-		ros::Duration(0.2).sleep();
+		ros::Duration(0.02).sleep();
 	}
 }
 
@@ -127,22 +128,22 @@ void RobotController::GoToTarget(const geometry_msgs::Pose& pose) {
 	if (this->Planner()) {
 		ROS_INFO_STREAM("Point success");
 		robot_move_group_.move();
-		ros::Duration(0.2).sleep();
+		ros::Duration(0.02).sleep();
 	}
 	ROS_INFO_STREAM("Point reached...");
 }
 
-void RobotController::GotoTarget(const geometry_msgs::Pose& pose) {
-	target_pose_.orientation = fixed_orientation_;
-	target_pose_.position = pose.position;
-//	ros::AsyncSpinner spinner(4);
-	robot_move_group_.setPoseTarget(target_pose_);
-//	spinner.start();
-		ROS_INFO_STREAM("Point success");
-		robot_move_group_.move();
-		ros::Duration(1.5).sleep();
-	ROS_INFO_STREAM("Point reached...");
-}
+//void RobotController::GotoTarget(const geometry_msgs::Pose& pose) {
+//	target_pose_.orientation = fixed_orientation_;
+//	target_pose_.position = pose.position;
+////	ros::AsyncSpinner spinner(4);
+//	robot_move_group_.setPoseTarget(target_pose_);
+////	spinner.start();
+//		ROS_INFO_STREAM("Point success");
+//		robot_move_group_.move();
+//		ros::Duration(1.5).sleep();
+//	ROS_INFO_STREAM("Point reached...");
+//}
 
 void RobotController::GoToTarget(
 		std::initializer_list<geometry_msgs::Pose> list) {
@@ -192,7 +193,7 @@ void RobotController::SendRobotHome() {
 void RobotController::GripperToggle(const bool& state) {
 	gripper_service_.request.enable = state;
 	gripper_client_.call(gripper_service_);
-	ros::Duration(1.0).sleep();
+	ros::Duration(0.01).sleep();
 	// if (gripper_client_.call(gripper_service_)) {
 	if (gripper_service_.response.success) {
 		ROS_INFO_STREAM("Gripper activated!");

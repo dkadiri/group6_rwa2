@@ -215,21 +215,19 @@ void AriacOrderManager::pathplanningCallback(const geometry_msgs::TransformStamp
 	arm_base_part_pose.orientation.y= msg.transform.rotation.y;
 	arm_base_part_pose.orientation.z= msg.transform.rotation.z;
 	arm_base_part_pose.orientation.w = msg.transform.rotation.w;
-//	if(count ==0) {
-//	ROS_INFO_STREAM("isPartAttached status" << arm1_.isPartAttached());
+	//	if(count ==0) {
+	//	ROS_INFO_STREAM("isPartAttached status" << arm1_.isPartAttached());
 	if(!arm1_.isPartAttached()) {
-//		ROS_INFO("part not attached");
-//		ROS_INFO_STREAM(msg.transform.translation.x<<","<< msg.transform.translation.y<<","<< msg.transform.translation.z);
+		//		ROS_INFO("part not attached");
+		//		ROS_INFO_STREAM(msg.transform.translation.x<<","<< msg.transform.translation.y<<","<< msg.transform.translation.z);
 		arm1_.GoToTarget(arm_base_part_pose);
 		count = 1;
-//		ROS_INFO("going toward part");
-//		ROS_INFO_STREAM(arm1_.getHomeCartPose().position.z- msg.transform.translation.z << ","<< arm1_.getHomeCartPose().position.y- msg.transform.translation.y);
+		//		ROS_INFO("going toward part");
+		ROS_INFO_STREAM("gap: "<<arm1_.getHomeCartPose().position.z- msg.transform.translation.z << ","<< arm1_.getHomeCartPose().position.y- msg.transform.translation.y);
 		if(arm1_.getHomeCartPose().position.z- msg.transform.translation.z < threshold_z &&
 				arm1_.getHomeCartPose().position.y- msg.transform.translation.y < threshold_y) {
-//			arm1_.GoToTarget(arm_base_part_pose);
+			//			arm1_.GoToTarget(arm_base_part_pose);
 			arm1_.GripperToggle(true);
-		} else {
-			arm1_.GripperToggle(false);
 		}
 	} else {
 		arm1_.GoToEnd();

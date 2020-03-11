@@ -43,7 +43,7 @@ void AriacSensorManager::setTransform () {
 	ros::Duration(0.01).sleep();
 	auto type = tracking_part->type;
 	try{
-		transformStamped3 = tfBuffer.lookupTransform("arm1_linear_arm_actuator", "logical_sensor_child",
+		transformStamped3 = tfBuffer.lookupTransform("world", "logical_sensor_child",
 				ros::Time(0));
 	}
 	catch (tf2::TransformException &ex) {
