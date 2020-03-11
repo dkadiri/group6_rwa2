@@ -317,6 +317,7 @@ bool RobotController::PickPart(geometry_msgs::Pose& part_pose) {
 }
 
 void RobotController::pathplanningCallback(const geometry_msgs::Pose& msg) {
+	ROS_INFO("robot_controller_pathPplanning");
 	GoToTarget(msg);
 
 }
