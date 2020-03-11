@@ -194,8 +194,16 @@ void RobotController::SendRobotHome() {
 
 	ros::Duration(2.0).sleep();
 }
-void RobotController::GoToEnd() {
-	robot_move_group_.setJointValueTarget(end_position_);
+void RobotController::GoToEnd(){
+	std::vector<double> intermidiate_position = {0.5, 0.5,-0.4, 0.8, 3.1 ,-1.59, 0.126};
+	GoToPose(intermidiate_position);
+	GoToPose(end_position_);
+	GripperToggle(false);
+
+}
+
+void RobotController::GoToPose(const std::vector<double> & pose ) {
+	robot_move_group_.setJointValueTarget(pose);
 	// this->execute();
 	ros::AsyncSpinner spinner(4);
 	spinner.start();
@@ -203,7 +211,7 @@ void RobotController::GoToEnd() {
 		robot_move_group_.move();
 		ros::Duration(1.5).sleep();
 	}
-	GripperToggle(false);
+
 	ros::Duration(2.0).sleep();
 
 }

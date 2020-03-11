@@ -70,6 +70,7 @@ public:
 	bool PickPart(geometry_msgs::Pose& );
 	bool isPartAttached();
 	void GoToEnd();
+	void GoToPose(const std::vector<double> &);
 	geometry_msgs::Pose getHomeCartPose();
 //	void GotoTarget(const geometry_msgs::Pose&);
 //	geometry_msgs::Pose convertToArmBaseFrame();
