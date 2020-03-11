@@ -27,7 +27,7 @@ private:
 	ros::ServiceClient gripper_client_;
 	ros::NodeHandle gripper_nh_;
 	ros::Subscriber gripper_subscriber_;
-
+	ros::Subscriber wayPoint_subscriber;
 	tf::TransformListener robot_tf_listener_;
 	tf::StampedTransform robot_tf_transform_;
 	tf::TransformListener agv_tf_listener_;
@@ -53,6 +53,7 @@ private:
 	tf::Quaternion q;
 	int counter_;
 	bool gripper_state_, drop_flag_;
+
 public:
 	RobotController(std::string);
 	~RobotController();
@@ -66,6 +67,8 @@ public:
 	void GripperCallback(const osrf_gear::VacuumGripperState::ConstPtr& );
 	void GripperStateCheck(geometry_msgs::Pose );
 	bool PickPart(geometry_msgs::Pose& );
+	void pathplanningCallback(const geometry_msgs::Pose&);
+
 
 
 };
