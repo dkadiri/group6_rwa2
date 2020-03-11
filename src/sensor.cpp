@@ -8,9 +8,9 @@ AriacSensorManager::AriacSensorManager(AriacOrderManager* obj): orderManager(obj
 	sensor_nh_ = orderManager->getnode();
 	ROS_INFO_STREAM(">>>>> Subscribing to logical sensors");
 
-	camera_4_subscriber_ = sensor_nh_->subscribe("/ariac/logical_camera_4", 1 , &AriacSensorManager::logicalCamera4Callback, this);
-//	breakbeam_subscriber = sensor_nh_->subscribe("/ariac/break_beam_1", 10,	&AriacSensorManager::breakBeamCallback,this);
-//	tracking_part = new osrf_gear::Model();
+	camera_4_subscriber_ = sensor_nh_->subscribe("/ariac/logical_camera_4", 10 , &AriacSensorManager::logicalCamera4Callback, this);
+	//	breakbeam_subscriber = sensor_nh_->subscribe("/ariac/break_beam_1", 10,	&AriacSensorManager::breakBeamCallback,this);
+	//	tracking_part = new osrf_gear::Model();
 	tracking_part= nullptr;
 }
 
@@ -39,7 +39,7 @@ void AriacSensorManager::setPose(const geometry_msgs::Pose pose, geometry_msgs::
 void AriacSensorManager::setTransform () {
 	setPose( tracking_part->pose, transformStamped2);
 	br_s_c.sendTransform(transformStamped2);
-	ros::Duration(0.2).sleep();
+	ros::Duration(0.02).sleep();
 	auto type = tracking_part->type;
 	try{
 		transformStamped3 = tfBuffer.lookupTransform("world", "logical_sensor_child",
@@ -48,15 +48,16 @@ void AriacSensorManager::setTransform () {
 	catch (tf2::TransformException &ex) {
 		ROS_WARN("exception");
 		ROS_WARN("%s",ex.what());
-		ros::Duration(1.0).sleep();
+		ros::Duration(0.02).sleep();
 	}
-	ROS_INFO("%s in world frame: [%f,%f,%f] [%f,%f,%f,%f]",type.c_str(),transformStamped3.transform.translation.x,
-			transformStamped3.transform.translation.y,
-			transformStamped3.transform.translation.z,
-			transformStamped3.transform.rotation.x,
-			transformStamped3.transform.rotation.y,
-			transformStamped3.transform.rotation.z,
-			transformStamped3.transform.rotation.w);
+
+//	ROS_INFO("%s in world frame: [%f,%f,%f] [%f,%f,%f,%f]",type.c_str(),transformStamped3.transform.translation.x,
+//			transformStamped3.transform.translation.y,
+//			transformStamped3.transform.translation.z,
+//			transformStamped3.transform.rotation.x,
+//			transformStamped3.transform.rotation.y,
+//			transformStamped3.transform.rotation.z,
+//			transformStamped3.transform.rotation.w);
 }
 
 void AriacSensorManager::logicalCamera4Callback(
@@ -79,14 +80,14 @@ void AriacSensorManager::logicalCamera4Callback(
 
 	setPose(sensor_pose,transformStamped1);
 	br_w_s.sendTransform(transformStamped1);
-	ros::Duration(0.2).sleep();
+	ros::Duration(0.02).sleep();
 	auto order = orderManager->getProductType();
 	for(auto it =image_msg->models.begin(); it!=image_msg->models.end();++it) {
-//		ROS_INFO_STREAM("debug : " << *it << std::endl);
+		//		ROS_INFO_STREAM("debug : " << *it << std::endl);
 
 
 		for (auto o_it = order.begin();o_it != order.end(); ++o_it) {
-//			ROS_INFO_STREAM("debug : " << *o_it << std::endl);
+			//			ROS_INFO_STREAM("debug : " << *o_it << std::endl);
 			if (tracking_part == nullptr && it->type.compare(*o_it)) {
 				tracking_part = new osrf_gear::Model();
 				tracking_part->type = it->type;
@@ -97,7 +98,7 @@ void AriacSensorManager::logicalCamera4Callback(
 
 		}
 
-		if (it->type.compare(tracking_part->type) == 0 && it->pose.position.y < tracking_part->pose.position.y) {
+		if (it->type.compare(tracking_part->type) == 0 && it-> pose.position.z > tracking_part->pose.position.z ) {
 			setPose(it->pose, tracking_part->pose);
 			setTransform();
 			ROS_INFO_STREAM("Tracking type: " << tracking_part->type << std::endl);

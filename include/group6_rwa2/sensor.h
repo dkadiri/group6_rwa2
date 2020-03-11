@@ -39,6 +39,7 @@ private:
 	geometry_msgs::TransformStamped transformStamped3;
 	tf2_ros::Buffer tfBuffer;
 	osrf_gear::Model*  tracking_part;
+
 	tf2_ros::TransformBroadcaster br_w_s;
 	tf2_ros::TransformBroadcaster br_s_c;
 	tf::TransformListener camera_tf_listener_;
