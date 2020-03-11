@@ -34,8 +34,7 @@ RobotController::RobotController(std::string arm_id) : robot_controller_nh_("/ar
 	gripper_subscriber_ = gripper_nh_.subscribe(
 			"/ariac/arm1/gripper/state", 10, &RobotController::GripperCallback, this);
 
-	wayPoint_subscriber = gripper_nh_.subscribe(
-				"/ariac/logical_sensor_4/tracking_object", 10, &RobotController::pathplanningCallback, this);
+
 	SendRobotHome();
 
 	robot_tf_listener_.waitForTransform("arm1_linear_arm_actuator", "arm1_ee_link",
@@ -316,9 +315,5 @@ bool RobotController::PickPart(geometry_msgs::Pose& part_pose) {
 	return gripper_state_;
 }
 
-void RobotController::pathplanningCallback(const geometry_msgs::Pose& msg) {
-	ROS_INFO("robot_controller_pathPplanning");
-	GoToTarget(msg);
 
-}
 

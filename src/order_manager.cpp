@@ -14,6 +14,8 @@
 AriacOrderManager::AriacOrderManager(ros::NodeHandle * nh): arm1_{"arm1"}
 {
 	order_manager_nh_ = nh;
+	wayPoint_subscriber = order_manager_nh_->subscribe(
+					"/ariac/logical_sensor_4/tracking_object", 10, &AriacOrderManager::pathplanningCallback, this);
     order_subscriber_ = order_manager_nh_->subscribe("/ariac/orders", 10,
             &AriacOrderManager::OrderCallback, this);
 
@@ -75,6 +77,8 @@ std::string AriacOrderManager::GetProductFrame(std::string product_type) {
         ros::shutdown();
     }
 }
+
+
 
 //bool AriacOrderManager::PickAndPlace(const std::pair<std::string,geometry_msgs::Pose> product_type_pose, int agv_id) {
 //    std::string product_type = product_type_pose.first;
@@ -171,6 +175,8 @@ std::string AriacOrderManager::GetProductFrame(std::string product_type) {
 //    }
 //}
 
+
+
 void AriacOrderManager::SubmitAGV(int num) {
     std::string s = std::to_string(num);
     ros::ServiceClient start_client =
@@ -194,4 +200,10 @@ void AriacOrderManager::SubmitAGV(int num) {
 
 ros::NodeHandle* AriacOrderManager::getnode() {
 	return order_manager_nh_;
+}
+
+void AriacOrderManager::pathplanningCallback(const geometry_msgs::Pose& msg) {
+	ROS_INFO("robot_controller_pathPplanning");
+//	GoToTarget(msg);
+
 }

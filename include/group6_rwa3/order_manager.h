@@ -27,6 +27,7 @@ private:
 	ros::Subscriber order_subscriber_;
 	std::vector<osrf_gear::Order> received_orders_;
 	std::vector<std::string> product_type;
+	ros::Subscriber wayPoint_subscriber;
 	// AriacSensorManager camera_;
 	RobotController arm1_;
 	//    RobotController arm2_;
@@ -48,6 +49,8 @@ public:
 	void setProductType();
 	void SubmitAGV(int);
 	ros::NodeHandle* getnode();
+
+	void pathplanningCallback(const geometry_msgs::Pose&);
 };
 #endif //GROUP6_RWA3_ORDER_MANAGER
 
