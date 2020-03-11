@@ -1,7 +1,7 @@
 # group6_rwa3
 Build Instructions
 1. Unzip the files to "catkin_ws/src"
-2. Run following command in the terminal:
+2. Change directory to "catkin_ws" and run following command in the terminal:
  ```
 catkin_make --only-pkg-with-deps group6_rwa3
  ```
