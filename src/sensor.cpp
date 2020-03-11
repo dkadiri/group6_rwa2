@@ -12,7 +12,7 @@ AriacSensorManager::AriacSensorManager(AriacOrderManager* obj): orderManager(obj
 	//	breakbeam_subscriber = sensor_nh_->subscribe("/ariac/break_beam_1", 10,	&AriacSensorManager::breakBeamCallback,this);
 	//	tracking_part = new osrf_gear::Model();
 	tracking_part= nullptr;
-	transform_publisher = sensor_nh_.advertise<geometry_msgs::PoseStamped>("/ariac/logical_sensor_4/tracking_object", 10);
+	transform_publisher = sensor_nh_.advertise<geometry_msgs::TransformStamped>("/ariac/logical_sensor_4/tracking_object", 10);
 }
 
 AriacSensorManager::~AriacSensorManager() {}
@@ -43,7 +43,7 @@ void AriacSensorManager::setTransform () {
 	ros::Duration(0.01).sleep();
 	auto type = tracking_part->type;
 	try{
-		transformStamped3 = tfBuffer.lookupTransform("world", "logical_sensor_child",
+		transformStamped3 = tfBuffer.lookupTransform("arm1_linear_arm_actuator", "logical_sensor_child",
 				ros::Time(0));
 	}
 	catch (tf2::TransformException &ex) {
@@ -51,17 +51,17 @@ void AriacSensorManager::setTransform () {
 		ROS_WARN("%s",ex.what());
 		ros::Duration(0.01).sleep();
 	}
-	geometry_msgs::PoseStamped msg;
-	msg.header = transformStamped3.header;
-	msg.pose.position.x = transformStamped3.transform.translation.x;
-	msg.pose.position.y = transformStamped3.transform.translation.y;
-	msg.pose.position.z = transformStamped3.transform.translation.z;
-	msg.pose.orientation.x = transformStamped3.transform.rotation.x;
-	msg.pose.orientation.y = transformStamped3.transform.rotation.y;
-	msg.pose.orientation.z = transformStamped3.transform.rotation.z;
-	msg.pose.orientation.w = transformStamped3.transform.rotation.w;
+//	geometry_msgs::PoseStamped msg;
+//	msg.header = transformStamped3.header;
+//	msg.pose.position.x = transformStamped3.transform.translation.x;
+//	msg.pose.position.y = transformStamped3.transform.translation.y;
+//	msg.pose.position.z = transformStamped3.transform.translation.z;
+//	msg.pose.orientation.x = transformStamped3.transform.rotation.x;
+//	msg.pose.orientation.y = transformStamped3.transform.rotation.y;
+//	msg.pose.orientation.z = transformStamped3.transform.rotation.z;
+//	msg.pose.orientation.w = transformStamped3.transform.rotation.w;
 
-	transform_publisher.publish(msg);
+	transform_publisher.publish(transformStamped3);
 
 	ROS_INFO("%s in world frame: [%f,%f,%f] [%f,%f,%f,%f]",type.c_str(),transformStamped3.transform.translation.x,
 			transformStamped3.transform.translation.y,

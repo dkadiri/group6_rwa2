@@ -202,20 +202,28 @@ ros::NodeHandle* AriacOrderManager::getnode() {
 	return order_manager_nh_;
 }
 
-void AriacOrderManager::pathplanningCallback(const geometry_msgs::PoseStamped& msg) {
+void AriacOrderManager::pathplanningCallback(const geometry_msgs::TransformStamped& msg) {
 	ROS_INFO("robot_controller_pathPlanning");
 	double threshold_z = 1;
 	double threshold_y = 1;
+	geometry_msgs::Pose arm_base_part_pose;
+	arm_base_part_pose.position.x= msg.transform.translation.x;
+	arm_base_part_pose.position.y= msg.transform.translation.x;
+	arm_base_part_pose.position.z= msg.transform.translation.x;
+	arm_base_part_pose.orientation.x= msg.transform.rotation.x;
+	arm_base_part_pose.orientation.y= msg.transform.rotation.y;
+	arm_base_part_pose.orientation.z= msg.transform.rotation.z;
+	arm_base_part_pose.orientation.w = msg.transform.rotation.z;
 
-	ROS_INFO_STREAM("isPartAttached status" << arm1_.isPartAttached());
+//	ROS_INFO_STREAM("isPartAttached status" << arm1_.isPartAttached());
 	if(!arm1_.isPartAttached()) {
-		ROS_INFO("part not attached");
-		geometry_msgs::Pose arm_base_part_pose = arm1_.convertToArmBaseFrame(msg);
-		ROS_INFO_STREAM(arm_base_part_pose.position.x<< arm_base_part_pose.position.y<< arm_base_part_pose.position.z);
-//		arm1_.GoToTarget(arm_base_part_pose);
-		ROS_INFO("going toward part");
-		if(arm1_.getHomeCartPose().orientation.z- msg.pose.orientation.z < threshold_z &&
-				arm1_.getHomeCartPose().orientation.y- msg.pose.orientation.y < threshold_y) {
+//		ROS_INFO("part not attached");
+//		ROS_INFO_STREAM(msg.transform.translation.x<<","<< msg.transform.translation.y<<","<< msg.transform.translation.z);
+		arm1_.GoToTarget(arm_base_part_pose);
+//		ROS_INFO("going toward part");
+//		ROS_INFO_STREAM(arm1_.getHomeCartPose().position.z- msg.transform.translation.z << ","<< arm1_.getHomeCartPose().position.y- msg.transform.translation.y);
+		if(arm1_.getHomeCartPose().position.z- msg.transform.translation.z < threshold_z &&
+				arm1_.getHomeCartPose().position.y- msg.transform.translation.y < threshold_y) {
 			arm1_.GripperToggle(true);
 		} else {
 			arm1_.GripperToggle(false);

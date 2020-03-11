@@ -70,7 +70,8 @@ public:
 	bool isPartAttached();
 	void GoToEnd();
 	geometry_msgs::Pose getHomeCartPose();
-	geometry_msgs::Pose convertToArmBaseFrame( const  geometry_msgs::PoseStamped& );
+//	geometry_msgs::Pose convertToArmBaseFrame();
+//	geometry_msgs::Pose convertToArmBaseFrame( const  geometry_msgs::TransformStamped& );
 
 
 };

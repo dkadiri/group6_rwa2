@@ -121,9 +121,9 @@ void RobotController::Execute() {
 void RobotController::GoToTarget(const geometry_msgs::Pose& pose) {
 	target_pose_.orientation = fixed_orientation_;
 	target_pose_.position = pose.position;
-	ros::AsyncSpinner spinner(4);
+//	ros::AsyncSpinner spinner(4);
 	robot_move_group_.setPoseTarget(target_pose_);
-	spinner.start();
+//	spinner.start();
 	if (this->Planner()) {
 		ROS_INFO_STREAM("Point success");
 		robot_move_group_.move();
@@ -357,46 +357,74 @@ geometry_msgs::Pose RobotController::getHomeCartPose(){
 //
 //}
 
-
-geometry_msgs::Pose RobotController::convertToArmBaseFrame( const geometry_msgs::PoseStamped& pose_msg) {
-	//tf2_ros::TransformBroadcaster br_w_arm;
-	geometry_msgs::Pose arm_base_part_pose;
-	tf2_ros::TransformBroadcaster br_arm_part;
-	tf2_ros::Buffer tfBuffer;
-
-	tf2_ros::TransformListener tfListener(tfBuffer);
-	geometry_msgs::TransformStamped ts_w_part;
-	geometry_msgs::TransformStamped ts_arm_part;
-	ts_w_part.header.stamp = pose_msg.header.stamp;
-	ts_w_part.header.frame_id = "world";
-	ts_w_part.child_frame_id = "tracking_part";
-	ts_w_part.transform.translation.x = pose_msg.pose.position.x;
-	ts_w_part.transform.translation.y = pose_msg.pose.position.y;
-	ts_w_part.transform.translation.z = pose_msg.pose.position.z;
-	ts_w_part.transform.rotation.x = pose_msg.pose.orientation.x;
-	ts_w_part.transform.rotation.y = pose_msg.pose.orientation.y;
-	ts_w_part.transform.rotation.z = pose_msg.pose.orientation.z;
-	ts_w_part.transform.rotation.w = pose_msg.pose.orientation.w;
-	br_arm_part.sendTransform(ts_w_part);
-	ros::Duration(0.01).sleep();
-
-//	tfBuffer.waitForTransform("arm1_linear_arm_actuator", "tracking_part",
-//				ros::Time(0), ros::Duration(10));
-	try{
-		ts_arm_part = tfBuffer.lookupTransform("arm1_linear_arm_actuator", "tracking_part",
-				ros::Time(0));
-	}
-	catch (tf2::TransformException &ex) {
-		ROS_WARN("exception");
-		ROS_WARN("%s",ex.what());
-		ros::Duration(0.01).sleep();
-	}
-	arm_base_part_pose.position.x = ts_arm_part.transform.translation.x;
-	arm_base_part_pose.position.y = ts_arm_part.transform.translation.y;
-	arm_base_part_pose.position.z = ts_arm_part.transform.translation.z;
-	arm_base_part_pose.orientation.x = fixed_orientation_.x;
-	arm_base_part_pose.orientation.y = fixed_orientation_.y;
-	arm_base_part_pose.orientation.z = fixed_orientation_.z;
-	arm_base_part_pose.orientation.w = fixed_orientation_.w;
- return arm_base_part_pose;
-}
+//
+//geometry_msgs::Pose RobotController::convertToArmBaseFrame( const geometry_msgs::TransformStamped& t_stammed) {
+//	//tf2_ros::TransformBroadcaster br_w_arm;
+//	geometry_msgs::Pose arm_base_part_pose;
+//	tf2_ros::TransformBroadcaster br_arm_part;
+//	tf2_ros::Buffer tfBuffer;
+//
+//	tf2_ros::TransformListener tfListener(tfBuffer);
+//	geometry_msgs::TransformStamped ts_w_part;
+//	geometry_msgs::TransformStamped ts_arm_part;
+//	ts_w_part.header.stamp = pose_msg.header.stamp;
+//	ts_w_part.header.frame_id = "world";
+//	ts_w_part.child_frame_id = "tracking_part";
+//	ts_w_part.transform.translation.x = pose_msg.pose.position.x;
+//	ts_w_part.transform.translation.y = pose_msg.pose.position.y;
+//	ts_w_part.transform.translation.z = pose_msg.pose.position.z;
+//	ts_w_part.transform.rotation.x = pose_msg.pose.orientation.x;
+//	ts_w_part.transform.rotation.y = pose_msg.pose.orientation.y;
+//	ts_w_part.transform.rotation.z = pose_msg.pose.orientation.z;
+//	ts_w_part.transform.rotation.w = pose_msg.pose.orientation.w;
+//	br_arm_part.sendTransform(ts_w_part);
+//	ros::Duration(0.01).sleep();
+//
+////	tfBuffer.waitForTransform("arm1_linear_arm_actuator", "tracking_part",
+////				ros::Time(0), ros::Duration(10));
+//	try{
+//		ts_arm_part = tfBuffer.lookupTransform("arm1_linear_arm_actuator", "tracking_part",
+//				ros::Time(0));
+//	}
+//	catch (tf2::TransformException &ex) {
+//		ROS_WARN("exception");
+//		ROS_WARN("%s",ex.what());
+//		ros::Duration(0.01).sleep();
+//	}
+//	arm_base_part_pose.position.x = ts_arm_part.transform.translation.x;
+//	arm_base_part_pose.position.y = ts_arm_part.transform.translation.y;
+//	arm_base_part_pose.position.z = ts_arm_part.transform.translation.z;
+//	arm_base_part_pose.orientation.x = fixed_orientation_.x;
+//	arm_base_part_pose.orientation.y = fixed_orientation_.y;
+//	arm_base_part_pose.orientation.z = fixed_orientation_.z;
+//	arm_base_part_pose.orientation.w = fixed_orientation_.w;
+// return arm_base_part_pose;
+//}
+//
+//geometry_msgs::Pose RobotController::convertToArmBaseFrame( ) {
+//	//tf2_ros::TransformBroadcaster br_w_arm;
+//	geometry_msgs::Pose arm_base_part_pose;
+//	tf2_ros::Buffer tfBuffer;
+//
+//
+//	tf2_ros::TransformListener tfListener(tfBuffer);
+//	geometry_msgs::TransformStamped ts_arm_part;
+//
+//	try{
+//		ts_arm_part = tfBuffer.lookupTransform("arm1_linear_arm_actuator", "logical_sensor_child",
+//				ros::Time(0));
+//	}
+//	catch (tf2::TransformException &ex) {
+//		ROS_WARN("exception");
+//		ROS_WARN("%s",ex.what());
+//		ros::Duration(0.01).sleep();
+//	}
+//	arm_base_part_pose.position.x = ts_arm_part.transform.translation.x;
+//	arm_base_part_pose.position.y = ts_arm_part.transform.translation.y;
+//	arm_base_part_pose.position.z = ts_arm_part.transform.translation.z;
+//	arm_base_part_pose.orientation.x = fixed_orientation_.x;
+//	arm_base_part_pose.orientation.y = fixed_orientation_.y;
+//	arm_base_part_pose.orientation.z = fixed_orientation_.z;
+//	arm_base_part_pose.orientation.w = fixed_orientation_.w;
+// return arm_base_part_pose;
+//}

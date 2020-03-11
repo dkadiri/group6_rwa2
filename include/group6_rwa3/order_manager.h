@@ -50,7 +50,7 @@ public:
 	void SubmitAGV(int);
 	ros::NodeHandle* getnode();
 
-	void pathplanningCallback(const geometry_msgs::PoseStamped&);
+	void pathplanningCallback(const geometry_msgs::TransformStamped&);
 };
 #endif //GROUP6_RWA3_ORDER_MANAGER
 
