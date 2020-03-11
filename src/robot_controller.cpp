@@ -195,7 +195,7 @@ void RobotController::SendRobotHome() {
 	ros::Duration(2.0).sleep();
 }
 void RobotController::GoToEnd(){
-	std::vector<double> intermidiate_position = {0.5, 0.5,-0.4, 0.8, 3.1 ,-1.59, 0.126};
+	std::vector<double> intermidiate_position = {0.5, 3.14,  -2.7,-1.0, 2.1, -1.59, 0.126};
 	GoToPose(intermidiate_position);
 	GoToPose(end_position_);
 	GripperToggle(false);
@@ -209,10 +209,10 @@ void RobotController::GoToPose(const std::vector<double> & pose ) {
 	spinner.start();
 	if (this->Planner()) {
 		robot_move_group_.move();
-		ros::Duration(1.5).sleep();
+		ros::Duration(0.02).sleep();
 	}
 
-	ros::Duration(2.0).sleep();
+	ros::Duration(0.05).sleep();
 
 }
 
