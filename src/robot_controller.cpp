@@ -56,7 +56,18 @@ RobotController::RobotController(std::string arm_id) : robot_controller_nh_("/ar
 	tf::Matrix3x3(q).getRPY(roll_def_,pitch_def_,yaw_def_);
 
 
-	end_position_ = {0.0, 3.1, -1.1, 1.9, 3.9, 4.7, 0};
+	//end_position_ = {0.0, 3.1, -1.1, 1.9, 3.9, 4.7, 0};
+        tf2::Quaternion myQuaternion;
+        myQuaternion.setRPY( 0.0006, -0.0010, 0.7851 );
+        geometry_msgs::Pose pose;
+        pose.orientation.x = myQuaternion.x();
+    pose.orientation.y = myQuaternion.y();
+    pose.orientation.z = myQuaternion.z();
+    pose.orientation.w = myQuaternion.w();
+
+    pose.position.x = -0.2000;
+    pose.position.y = 0.5830;
+    pose.position.z = 0.7241;
 	//	end_position_[0] = 2.2;
 	//    end_position_[1] = 4.5;
 	//    end_position_[2] = 1.2;
@@ -312,7 +323,7 @@ bool RobotController::PickPart(geometry_msgs::Pose& part_pose) {
 	ROS_INFO_STREAM("Moving to part...");
 	part_pose.position.z = part_pose.position.z + offset_;
 	auto temp_pose_1 = part_pose;
-	temp_pose_1.position.z += 0.3;
+	temp_pose_1.position.z += 0.1;
 
 	this->GoToTarget({temp_pose_1, part_pose});
 
@@ -322,6 +333,7 @@ bool RobotController::PickPart(geometry_msgs::Pose& part_pose) {
 	while (!gripper_state_) {
 		part_pose.position.z -= 0.01;
 		this->GoToTarget({temp_pose_1, part_pose});
+                temp_pose_1 = part_pose;
 		ROS_INFO_STREAM("Actuating the gripper...");
 		this->GripperToggle(true);
 		ros::spinOnce();
@@ -333,7 +345,7 @@ bool RobotController::PickPart(geometry_msgs::Pose& part_pose) {
 }
 
 bool RobotController::isPartAttached(){
-	return gripper_status_.attached;
+	return gripper_state_;
 }
 
 void RobotController::GoToEnd() {

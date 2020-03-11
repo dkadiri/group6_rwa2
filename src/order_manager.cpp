@@ -206,11 +206,11 @@ ros::NodeHandle* AriacOrderManager::getnode() {
 void AriacOrderManager::pathplanningCallback(const geometry_msgs::TransformStamped& msg) {
 	ROS_INFO("robot_controller_pathPlanning");
 	double threshold_z = 0.1;
-	double threshold_y = 0.1;
+	double threshold_y = 0.35;
 	geometry_msgs::Pose arm_base_part_pose;
 	arm_base_part_pose.position.x= msg.transform.translation.x;
-	arm_base_part_pose.position.y= msg.transform.translation.y;
-	arm_base_part_pose.position.z= msg.transform.translation.z+0.02;
+	arm_base_part_pose.position.y= msg.transform.translation.y-0.2;
+	arm_base_part_pose.position.z= msg.transform.translation.z;
 	arm_base_part_pose.orientation.x= msg.transform.rotation.x;
 	arm_base_part_pose.orientation.y= msg.transform.rotation.y;
 	arm_base_part_pose.orientation.z= msg.transform.rotation.z;
@@ -227,7 +227,11 @@ void AriacOrderManager::pathplanningCallback(const geometry_msgs::TransformStamp
 		if(arm1_.getHomeCartPose().position.z- msg.transform.translation.z < threshold_z &&
 				arm1_.getHomeCartPose().position.y- msg.transform.translation.y < threshold_y) {
 			//			arm1_.GoToTarget(arm_base_part_pose);
-			arm1_.GripperToggle(true);
+			// arm1_.PickPart(arm_base_part_pose);
+                           arm1_.GripperToggle(true);
+                           arm_base_part_pose.position.z += 0.2;
+                           arm_base_part_pose.position.y += 0.5;
+		           arm1_.GoToTarget(arm_base_part_pose);
 		}
 	} else {
 		arm1_.GoToEnd();
