@@ -27,7 +27,7 @@ RobotController::RobotController(std::string arm_id) : robot_controller_nh_("/ar
 
 	//--These are joint positions used for the home position
 	//	home_joint_pose_ = {0.0, 3.1, -1.1, 1.9, 3.9, 4.7, 0};
-	home_joint_pose_ = {-0.25, 0.0,  -0.66,  1.6, 3.8, -1.59, 0.126};
+	home_joint_pose_ = {-0.25, 0.0,  -0.7,  1.6, 3.9, -1.59, 0.126};
 	//home_joint_pose_ = {4.78, 0.09, -2.39, 3.14, -0.88, 1.51, 0};
 	//-- offset used for picking up parts
 	//-- For the pulley_part, the offset is different since the pulley is thicker
