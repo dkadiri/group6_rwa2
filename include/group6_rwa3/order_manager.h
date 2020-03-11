@@ -36,6 +36,7 @@ private:
 	std::string object;
 	std::map<std::string, std::vector<std::string>> product_frame_list_;
 	osrf_gear::Order order_;
+	int count;
 
 public:
 	AriacOrderManager(ros::NodeHandle *);

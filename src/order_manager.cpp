@@ -18,6 +18,7 @@ AriacOrderManager::AriacOrderManager(ros::NodeHandle * nh): arm1_{"arm1"}
 			"/ariac/logical_sensor_4/tracking_object", 10, &AriacOrderManager::pathplanningCallback, this);
 	order_subscriber_ = order_manager_nh_->subscribe("/ariac/orders", 10,
 			&AriacOrderManager::OrderCallback, this);
+	count =0;
 
 }
 
@@ -213,13 +214,14 @@ void AriacOrderManager::pathplanningCallback(const geometry_msgs::TransformStamp
 	arm_base_part_pose.orientation.x= msg.transform.rotation.x;
 	arm_base_part_pose.orientation.y= msg.transform.rotation.y;
 	arm_base_part_pose.orientation.z= msg.transform.rotation.z;
-	arm_base_part_pose.orientation.w = msg.transform.rotation.z;
-
+	arm_base_part_pose.orientation.w = msg.transform.rotation.w;
+	if(count ==0) {
 //	ROS_INFO_STREAM("isPartAttached status" << arm1_.isPartAttached());
-	if(!arm1_.isPartAttached()) {
+//	if(!arm1_.isPartAttached()) {
 //		ROS_INFO("part not attached");
 //		ROS_INFO_STREAM(msg.transform.translation.x<<","<< msg.transform.translation.y<<","<< msg.transform.translation.z);
 		arm1_.GoToTarget(arm_base_part_pose);
+		count = 1;
 //		ROS_INFO("going toward part");
 //		ROS_INFO_STREAM(arm1_.getHomeCartPose().position.z- msg.transform.translation.z << ","<< arm1_.getHomeCartPose().position.y- msg.transform.translation.y);
 		if(arm1_.getHomeCartPose().position.z- msg.transform.translation.z < threshold_z &&
