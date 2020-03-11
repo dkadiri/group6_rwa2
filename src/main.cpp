@@ -73,7 +73,8 @@ int main(int argc, char **argv) {
 
 
     StartCompetition(node);
-    ros::Duration(2.0).sleep();
+    ros::Rate(10.0).sleep();
+//    ros::Duration(2.0).sleep();
     //manager.SetScannedProducts();
 //    manager.ExecuteOrder();
 
